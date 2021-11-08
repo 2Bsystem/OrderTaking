@@ -154,7 +154,7 @@ public class Connect extends HttpServlet {
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				request.setAttribute( "ids", "");
 				request.setAttribute("Connect", 1);
-				RequestDispatcher rd = request.getRequestDispatcher("/Commande");
+				RequestDispatcher rd = request.getRequestDispatcher("/Order");
 				rd.forward(request, response);
 
 			} catch (Exception e) {
