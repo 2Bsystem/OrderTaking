@@ -1,0 +1,89 @@
+.largeur_tab_libelle {
+	width: 50%;
+}
+.largeur_tab_valeur {
+	width: 50%;
+}
+.modal-css {
+	position: fixed;
+	width: 100%;
+	padding-top: 5px;
+    padding-bottom: 3px;
+    left: 0;
+    right: 0;
+    bottom: 320px;
+    background-color: #CBCBCB;
+}
+.label-modal-css {
+	text-align:center;
+	font-size:30px;
+	font-weight: bold;
+}
+
+.modal-box-css {
+	padding-right: 20%;
+	padding-left: 20%;
+}
+
+.modal-margin {
+	margin-bottom: 15px;
+}
+
+.diversChamp {
+	display:flex;
+	justify-content: end;
+}
+
+.centerChamp {
+	margin-right: 30%;
+}
+
+.diversPays {
+	display:flex;
+	justify-content: end;
+}
+
+.input-client-divers {
+	width: 60% !important;	
+}
+
+.span-client-divers {
+	font-weight: 700;
+	margin-bottom: 15px;
+    padding: calc(.5em - 1px);
+}
+.div-select-client-divers {
+	height: auto!important;
+    margin-bottom: 15px;	
+}
+
+.select-fullwidth {
+	width: 100%;
+}
+
+/* MODAL Suppr Article*/
+
+#modalDelete {
+	display:none;
+    bottom: 0;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	background-color: rgba(0,0,0,0.5);
+	z-index:40;
+}
+
+#modalDEL {
+	display:flex;
+	flex-direction:column;
+	background-color:#FFFFFF;
+	width:40%;
+	position:absolute;
+	margin-right:30%;
+	margin-left:30%;
+	margin-top:20%;
+	border-radius:10px 10px;
+	align-content:center;
+}
+

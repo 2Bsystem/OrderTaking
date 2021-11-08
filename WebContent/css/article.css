@@ -1,0 +1,23 @@
+.table-article tbody tr {
+	display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+.table-article thead tr {
+	display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+.table-article thead .largeur1, .table-article tbody .largeur1 {
+ 	width: 20%;
+}
+.table-article thead .largeur2, .table-article tbody .largeur2 {
+	width: 80%;
+}
+.section-article {
+	padding: 1rem 1.5rem;
+}
+.label-recherche-article {
+	padding-top: 9px;
+	margin-right: auto;
+}

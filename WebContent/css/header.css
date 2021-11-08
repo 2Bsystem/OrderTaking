@@ -1,0 +1,17 @@
+.hero-main {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin-top: 0px;
+    z-index: 3;
+}  
+.is-very-small {
+	padding: 1rem;
+}
+.title-header {
+	position: absolute;
+	width: 100%;
+ 	display: flex;
+  	justify-content: center;
+}

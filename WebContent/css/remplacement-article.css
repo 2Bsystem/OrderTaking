@@ -1,0 +1,20 @@
+.wrapper {
+  display: none;
+  grid-template-columns: 17.5vw 17.5vw 17.5vw 17.5vw 17.5vw;
+  grid-template-rows: minmax(125px, 125px);
+  grid-gap: 1vw;
+  background-color: #fff;
+  color: #444;
+  overflow-y: scroll;
+}
+
+.grid-boxes {
+  min-height: 125px;
+  max-height: 125px;
+  cursor: pointer;
+  background-color: #72787e;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}

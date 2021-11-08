@@ -1,0 +1,9 @@
+.box-saisie{
+	margin-right: 1rem;
+	margin-bottom: 1rem;
+}
+
+.div-input-article {
+	margin-right: 10px;
+    width: -webkit-fill-available;
+}
