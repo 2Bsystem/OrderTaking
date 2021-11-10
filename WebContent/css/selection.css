@@ -1,0 +1,75 @@
+.bloc-client {
+	width: 100%
+}
+.label-selection {
+	padding-top:9px;
+	padding-bottom:9px;
+	padding-left:14px;
+	padding-right:14px;
+	font-weight: 700;
+}
+.input-client {
+	width: 50%
+}
+.section-selection {
+	padding: 1rem 1.5rem;
+}
+.label-block-left{
+    display: inline-block;
+    width: 145px;
+}
+.input-block-left {
+  display: inline-block;	
+}
+.box:not(:last-child) {
+	margin-bottom:1rem;
+}
+.table-box {
+	width: 100%; 
+	margin-left: 1.5rem;
+}
+tr:nth-child(even){
+	background-color: #f2f2f2;
+}
+.table-selection tbody tr {
+	display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+.table-selection thead tr {
+	display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+.table-selection thead .largeur1, .table-selection  tbody .largeur1 {
+ 	width: 5%;
+}
+.table-selection  thead .largeur2, .table-selection  tbody .largeur2 {
+	text-align: center;
+	width: 8%;
+}
+.table-selection  thead .largeur3, .table-selection  tbody .largeur3 {
+ 	text-align: right;
+ 	width: 12%;
+}
+.table-selection  thead .largeur4, .table-selection  tbody .largeur4 {
+ 	width: 7%;
+}
+.table-selection  thead .largeur5, .table-selection  tbody .largeur5 {
+ 	width: 68%;
+}
+.input-lock-color {
+	cursor: default!important;
+	background-color: #d9d9d9;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
