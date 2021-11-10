@@ -25,9 +25,10 @@ import com.a2bsystem.models.Constantes;
 @WebServlet("/Order")
 public class Order extends HttpServlet {
 	
-	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		
-		
+	@Override
+	protected void doPost( HttpServletRequest request, HttpServletResponse response ) 
+			throws ServletException, IOException {
+				
 		HttpSession session = request.getSession();
 		String prev_page = request.getParameter("prev_page");
 		System.out.println(prev_page);
@@ -37,7 +38,7 @@ public class Order extends HttpServlet {
 
 		
 		if(prev_page.equals("commande")) {
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 		}
 		
 		// set client depuis la page client
@@ -72,7 +73,7 @@ public class Order extends HttpServlet {
 				session.setAttribute( "code_client_order", request.getParameter("code_client_select"));
 				session.setAttribute( "client_divers_order", request.getParameter("client_divers_select"));
 			}
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 
 		}
 		
@@ -173,7 +174,7 @@ public class Order extends HttpServlet {
 	        }  
 			
 			
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 
 		}
 		
@@ -217,7 +218,7 @@ public class Order extends HttpServlet {
 	        catch (Exception e) {
 	            e.printStackTrace();
 	        }  
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 		}
 
 		if(request.getParameter("prev_page").equals("edition_facture")) {
@@ -240,7 +241,7 @@ public class Order extends HttpServlet {
 	        }
 			session.setAttribute("num_order", null);
 			session.setAttribute( "exist_order", null);
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 		}
 		
 
@@ -289,10 +290,11 @@ public class Order extends HttpServlet {
 	            e.printStackTrace();
 	        }
 			
-			this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+			//this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
 
 		}
-		
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/order.jsp" ).forward( request, response );
+
 		
 	}
 	

@@ -302,9 +302,9 @@
 <div class="box box-button p-1">
 	<div class="navigation-bar">
 	    <div>
-    		 <form id="form_retour" class="form-fullwidth" method="post" action="Commande">
+    		 <form id="form_retour" class="form-fullwidth" method="post" action="Connect">
     			<div style="display:none;"><input type="text" value="deconnexion" name="prev_page"></div>
-				<input id="input_retour" class="button is-size-5 has-text-weight-bold" value="COMMANDE" type="submit" style="background-color:  <%= Constantes.COULBTN2 %>; color: <%= Constantes.COULBTNTXT %> ;">
+				<input id="input_retour" class="button is-size-5 has-text-weight-bold" value="DECONNEXION" type="submit" style="background-color:  <%= Constantes.COULBTN2 %>; color: <%= Constantes.COULBTNTXT %> ;">
 			</form>
     	</div>
     	<style>

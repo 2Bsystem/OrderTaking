@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.a2bsystem.models.DetailCmde;
+//import com.a2bsystem.models.DetailCmde;
 import com.a2bsystem.models.ChampsArt;
 import com.a2bsystem.models.Constantes;
 
