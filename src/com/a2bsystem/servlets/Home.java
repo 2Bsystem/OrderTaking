@@ -67,8 +67,6 @@ public class Home extends HttpServlet {
 		        Constantes.COULZTXT = prop.getProperty("COULZTXT");
 		        Constantes.COULTABCEL2 = prop.getProperty("COULTABCEL2");
 		        Constantes.COULSLCT = prop.getProperty("COULSLCT");
-		        Constantes.GROS_CLAVIER_CLIENT = prop.getProperty("GROS_CLAVIER_CLIENT");
-		        Constantes.GROS_CLAVIER_ARTICLE = prop.getProperty("GROS_CLAVIER_ARTICLE");
 		        session.setAttribute("depot", prop.getProperty("DEPOT"));
 		        session.setAttribute("foretagKod", prop.getProperty("FORETAGKOD"));
 		        session.setAttribute("tracabilite", prop.getProperty("TRACABILITE"));
@@ -80,6 +78,8 @@ public class Home extends HttpServlet {
 		        session.setAttribute("origine", prop.getProperty("ORIGINE"));
 		        session.setAttribute("printer", prop.getProperty("PRINTER"));
 		        session.setAttribute("vendeur", prop.getProperty("VENDEUR"));
+		        session.setAttribute("grosClavierClient", prop.getProperty("GROS_CLAVIER_CLIENT"));
+		        session.setAttribute("grosClavierArticle", prop.getProperty("GROS_CLAVIER_ARTICLE"));
 			} catch (FileNotFoundException exc)
 			{
 				request.setAttribute("erreur_param", true);

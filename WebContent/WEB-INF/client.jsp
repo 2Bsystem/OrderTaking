@@ -92,7 +92,7 @@
 	  	var getBodyTable = document.getElementById("bodyTable")
   		var getFormId = document.getElementById("form_client")
 
-	  		if ("<%= Constantes.GROS_CLAVIER_CLIENT %>" == '1') {
+	  		if ("<%= session.getAttribute("grosClavierClient") %>" == "1") {
 	  			getIdsearchNom.setAttribute('class', 'input input-color is-size-5 is-fullwidth use-keyboard-input-tri-no-num-client')
 	  			getBodyTable.style.height = "calc(100vh - 660.65px)"
 	  			getFormId.style.height = "calc(100vh - 540.65px)"
