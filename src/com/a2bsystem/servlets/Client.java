@@ -34,7 +34,7 @@ public class Client extends HttpServlet {
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_prepa_get_client " + foretagKod + ",'" + Login + "';";
+        	String SQL = "EXEC q_2bp_java_web_order_get_client " + foretagKod + ",'" + Login + "';";
         	ResultSet rs = stmt.executeQuery(SQL);
             List<Cli> clients = new ArrayList<Cli>();
         	if(rs.next()) {

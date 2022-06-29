@@ -46,8 +46,9 @@ public class Order extends HttpServlet {
 		if(request.getParameter("prev_page").equals("client")) {
 			if(Client_select != "") {
 				try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-					 String SQL = "SELECT UPPER(XR.landskod)AS Code_Pays,XR.Land AS Libelle_Pays FROM xr XR WITH(NOLOCK) WHERE XR.ForetagKod = "+ foretagKod + " order by case when UPPER(XR.landskod) = 'FR' then 0 else 1 end, Code_Pays ASC;";
-					 System.out.println(SQL);
+					// String SQL = "SELECT UPPER(XR.landskod)AS Code_Pays,XR.Land AS Libelle_Pays FROM xr XR WITH(NOLOCK) WHERE XR.ForetagKod = "+ foretagKod + " order by case when UPPER(XR.landskod) = 'FR' then 0 else 1 end, Code_Pays ASC;";
+					String SQL = "EXEC q_2bp_java_web_order_get_pays " + foretagKod + ";" ;
+					System.out.println(SQL);
 					 ResultSet rs = stmt.executeQuery(SQL);
 					 List<Pays> liste_pays = new ArrayList<Pays>();
 		        	if(rs.next()) {
@@ -82,24 +83,25 @@ public class Order extends HttpServlet {
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				String SQL;
 				if(session.getAttribute("client_divers_order").equals("1")) {
-					SQL = "EXEC q_2bp_java_ventes_create_ligne " + foretagKod + ",'" 
-																 + Login + "','"
-																 + session.getAttribute("code_client_order") + "','"
-																 + session.getAttribute("vendeur") + "','"
-																 + session.getAttribute("code_article_order")+"',"
-																 + request.getParameter("colis_order") + ","
-																 + request.getParameter("pieces_order")+ ","
-																 + request.getParameter("poids_net_order")+ ","
-																 + "0,"
-																 + request.getParameter("poids_net_order")+ ","
-																 + request.getParameter("prix_order")+ ","
-																 + "@q_gcoh_divftgnr = '" + session.getAttribute("nom_client_divers") + "',"
-																 + "@ordlevadr1 = '" + session.getAttribute("adresse_client_divers") + "',"
-																 + "@ordlevadr2 = '" + session.getAttribute("adresse2_client_divers") + "',"
-																 + "@q_gcoh_divcp = '" + session.getAttribute("cp_client_divers") + "',"
-																 + "@q_gcoh_divville = '" + session.getAttribute("ville_client_divers") + "',"
-																 + "@ordlevadrlandskod = '" + session.getAttribute("code_pays_client_divers") + "'"
-																 + ";";
+					SQL = "EXEC q_2bp_java_web_order_create_ligne @Foretagkod="           + foretagKod + "," 
+															   + "@Perssign='"            + Login + "',"
+															   + "@FtgNr='"               + session.getAttribute("code_client_order") + "',"
+															   + "@Saljare='"             + session.getAttribute("vendeur") + "',"
+															   + "@ArtNr='"               + session.getAttribute("code_article_order")+"',"
+															   + "@ua1="                  + request.getParameter("colis_order") + ","
+															   + "@ua3="                  + request.getParameter("pieces_order")+ ","
+															   + "@ua5="                  + request.getParameter("poids_net_order")+ ","
+															   + "@ua6=" 	              + "0,"
+															   + "@ua9="                  + request.getParameter("poids_net_order")+ ","
+															   + "@q_vb_pris="            + request.getParameter("prix_order")+ ","
+															   + "@UniteVente="           + "'Aucun',"
+															   + "@q_gcoh_divftgnr = '"   + session.getAttribute("nom_client_divers") + "',"
+															   + "@ordlevadr1 = '"        + session.getAttribute("adresse_client_divers") + "',"
+															   + "@ordlevadr2 = '"        + session.getAttribute("adresse2_client_divers") + "',"
+															   + "@q_gcoh_divcp = '"      + session.getAttribute("cp_client_divers") + "',"
+															   + "@q_gcoh_divville = '"   + session.getAttribute("ville_client_divers") + "',"
+															   + "@ordlevadrlandskod = '" + session.getAttribute("code_pays_client_divers") + "'"
+															   + ";";
 					//  reset client divers
 					session.setAttribute("client_divers_order", "0");
 					session.setAttribute("nom_divers_order", null);
@@ -109,18 +111,18 @@ public class Order extends HttpServlet {
 					session.setAttribute("ville_divers_order", null);
 					session.setAttribute("code_pays_client_divers", null);
 				}else {
-					SQL = "EXEC q_2bp_java_ventes_create_ligne " + foretagKod + ",'" 
-							 									 + Login + "','"
-					 											 + session.getAttribute("code_client_order") + "','"
-					 											 + session.getAttribute("vendeur") + "','"
-					 											 + session.getAttribute("code_article_order")+"',"
-					 											 + request.getParameter("colis_order") + ","
-					 											 + request.getParameter("pieces_order")+ ","
-					 											 + request.getParameter("poids_net_order")+ ","
-					 											 + "0,"
-					 											 + request.getParameter("poids_net_order")+ ","
-					 											 + request.getParameter("prix_order")
-					 											 + ";";
+					SQL = "EXEC q_2bp_java_web_order_create_ligne @Foretagkod="           + foretagKod + "," 
+															   + "@Perssign='"            + Login + "',"
+															   + "@FtgNr='"               + session.getAttribute("code_client_order") + "',"
+															   + "@Saljare='"             + session.getAttribute("vendeur") + "',"
+															   + "@ArtNr='"               + session.getAttribute("code_article_order")+"',"
+															   + "@ua1="                  + request.getParameter("colis_order") + ","
+															   + "@ua3="                  + request.getParameter("pieces_order")+ ","
+															   + "@ua5="                  + request.getParameter("poids_net_order")+ ","
+															   + "@ua6=" 	              + "0,"
+															   + "@ua9="                  + request.getParameter("poids_net_order")+ ","
+															   + "@q_vb_pris="            + request.getParameter("prix_order")+ ","
+															   + "@UniteVente="           + "'Aucun';";
 				}
 				 System.out.println(SQL);
 				 ResultSet rs = stmt.executeQuery(SQL);
