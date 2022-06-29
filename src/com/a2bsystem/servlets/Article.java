@@ -47,7 +47,7 @@ public class Article extends HttpServlet {
 		}
 		
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_prepa_get_article " + foretagKod + ",'" + Login + "';";
+        	String SQL = "EXEC q_2bp_java_web_order_get_article " + foretagKod + ",'" + Login + "';";
         	ResultSet rs = stmt.executeQuery(SQL);
             List<Art> articles = new ArrayList<Art>();
         	if(rs.next()) {

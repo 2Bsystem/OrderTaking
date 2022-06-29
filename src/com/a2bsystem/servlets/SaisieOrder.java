@@ -46,7 +46,7 @@ public class SaisieOrder extends HttpServlet {
 				try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 		        	
 		        	String SQL = "";
-		        		SQL = "EXEC q_2bp_java_ventes_get_champs_article " 
+		        		SQL = "EXEC q_2bp_java_web_order_get_champs_article " 
 		        	            + foretagKod + ",'"
 		        	            + Login + "','"
 		        	            + session.getAttribute("code_article_order") + "',"
