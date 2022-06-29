@@ -40,7 +40,7 @@ public class Home extends HttpServlet {
 			session.setAttribute("param_borne", param_borne);
 			
 			Properties prop = new Properties();
-	        File file = new File("C:/Borne" + param_borne + ".cfg");
+	        File file = new File("C:/IIBSYSTEM/WEBConfig/Borne" + param_borne + ".cfg");
 	        /* Ici le fichier contenant les données de configuration est nommé 'db.myproperties' */
 	        FileInputStream in = null;
 			try {
