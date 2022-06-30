@@ -54,7 +54,7 @@
 	      </thead>
 	      <tbody id="bodyTable" style="display:none; height: calc(100vh - 540.65px); cursor:pointer; overflow-y: auto;">
 	      <%
-	      	for (Cli client : (List<Cli>) request.getAttribute("clients")) {
+	      for (Cli client : (List<Cli>) request.getAttribute("clients")) {
 	      %>
 			<tr id="<%= client.code.replaceAll("\\s+", "") %>" class="tr-clients">
 				<td class="largeur1"><%= client.code %></td>
