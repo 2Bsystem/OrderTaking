@@ -77,7 +77,6 @@ public class Home extends HttpServlet {
 		        session.setAttribute("flux", prop.getProperty("FLUX"));
 		        session.setAttribute("origine", prop.getProperty("ORIGINE"));
 		        session.setAttribute("printer", prop.getProperty("PRINTER"));
-		        session.setAttribute("vendeur", prop.getProperty("VENDEUR"));
 		        session.setAttribute("grosClavierClient", prop.getProperty("GROS_CLAVIER_CLIENT"));
 		        session.setAttribute("grosClavierArticle", prop.getProperty("GROS_CLAVIER_ARTICLE"));
 			} catch (FileNotFoundException exc)

@@ -25,6 +25,7 @@ public class Connect extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
+		var foretagKod = session.getAttribute("foretagKod");
 		String prev_page = request.getParameter("prev_page");
 		if(prev_page.equals("deconnexion")) {			
 			session.setAttribute( "date", null);
@@ -150,12 +151,26 @@ public class Connect extends HttpServlet {
 			session.setAttribute("login", Login);
 			String connectionUrl = "jdbc:sqlserver://" + Constantes.SERVEUR + ";databaseName=" + Constantes.BDD + ";user="
 					+ Login + ";password=" + Password;
-
+			
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				request.setAttribute( "ids", "");
 				request.setAttribute("Connect", 1);
+				
+				String SQL;
+				SQL = "EXEC q_2bp_java_web_order_get_vendeur @Foretagkod=" + foretagKod + "," 
+						                                   + "@Perssign='"  + Login + "';";
+				
+			
+				ResultSet rs = stmt.executeQuery(SQL);
+				if(rs.next()) {
+					session.setAttribute("vendeur",rs.getString("vendeur"));
+					session.setAttribute("nomVendeur", rs.getString("Nom_vendeur"));
+				}
+				
 				RequestDispatcher rd = request.getRequestDispatcher("/Order");
 				rd.forward(request, response);
+				
+				
 
 			} catch (Exception e) {
 				request.setAttribute( "ids", "Identifiants incorrects");
