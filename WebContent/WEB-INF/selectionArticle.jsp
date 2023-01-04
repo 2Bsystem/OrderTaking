@@ -1,18 +1,16 @@
 <jsp:include page="header.jsp"/>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 	<div id="top">
-		<h1 class="btn btn-outline-info btn-lg"><%= request.getParameter("valCategory") %> </h1>
-		
+		<h1 class="btn btn-outline-info btn-lg"><%= request.getParameter("valCategory") %> </h1>	
 	</div>
 	
-
-	<form method="post" action="">
+	<form id="formSelectArticle" method="post" action="SaisieArticle">
 	
-		<ul id="listArticle" class="list-group">
+		<div id="listArticle" class="btn-group-vertical">
+			
+		</div>
 
-		</ul>
-
-		<input id="valCategory" type="hidden" value="<%= request.getParameter("valCategory") %>" >
+ 		<input id="valCategory" type="hidden" value="<%= request.getParameter("valCategory") %>" >
   	</form>
   	
   	<script>
@@ -103,66 +101,107 @@
   		function printLiBoeuf() {
   			
   			for( var i = 0; i < listeBoeuf.length; i++){
-  	  			
-  	  			var li = document.createElement("li");
+  	  	 	  /* 	var li = document.createElement("li");
   	  			li.classList.add("list-group-item");
   	  			
   	  			var t = document.createTextNode(listeBoeuf[i]);
   	  			li.appendChild(t);
   	  			document.getElementById("listArticle").appendChild(li)
+  	  			li.setAttribute("onclick", "formSelectArticle.submit()");
+  	  			li.innerHTML = listeBoeuf[i]; */
   	  			
-  	  			li.innerHTML = listeBoeuf[i];
-  	  			
+  				var btn = document.createElement("button");
+  				btn.classList.add("btn");
+  				btn.classList.add("btn-outline-secondary");
+  				btn.classList.add("btn-lg");
+  				btn.setAttribute('name', 'valArticle');
+  				var t = document.createTextNode(listeBoeuf[i]);
+  				btn.appendChild(t);
+  				document.getElementById("listArticle").appendChild(btn);			
+     			btn.value = listeBoeuf[i];
+
   	  		}
+		
   		}
   		
 		function printLiVeau() {
 		  			
-		  			for( var i = 0; i < listeVeau.length; i++){
-		  	  			
-		  	  			var li = document.createElement("li");
-		  	  			li.classList.add("list-group-item");
-		  	  			
-		  	  			var t = document.createTextNode(listeVeau[i]);
-		  	  			li.appendChild(t);
-		  	  			document.getElementById("listArticle").appendChild(li)
-		  	  			
-		  	  			li.innerHTML = listeVeau[i];
-		  	  			
-		  	  		}
-		  		}
+  			for( var i = 0; i < listeVeau.length; i++){
+  	  			
+  	  		/* 	var li = document.createElement("li");
+  	  			li.classList.add("list-group-item");
+  	  			
+  	  			var t = document.createTextNode(listeVeau[i]);
+  	  			li.appendChild(t);
+  	  			document.getElementById("listArticle").appendChild(li)
+  	  			li.setAttribute("onclick", "formSelectArticle.submit()");
+  	  			li.innerHTML = listeVeau[i]; */
+  	  			
+  				var btn = document.createElement("button");
+  				btn.classList.add("btn");
+  				btn.classList.add("btn-outline-secondary");
+  				btn.classList.add("btn-lg");
+  				btn.setAttribute('name', 'valArticle');
+  				var t = document.createTextNode(listeVeau[i]);
+  				btn.appendChild(t);
+  				document.getElementById("listArticle").appendChild(btn);
+     			btn.value = listeVeau[i];
+
+  	  		}
+  		}
 		  		
 		function printLiPorc() {
 				
-				for( var i = 0; i < listePorc.length; i++){
-					
-					var li = document.createElement("li");
-					li.classList.add("list-group-item");
-					
-					var t = document.createTextNode(listePorc[i]);
-					li.appendChild(t);
-					document.getElementById("listArticle").appendChild(li)
-					
-					li.innerHTML = listePorc[i];
-					
-				}
+			for( var i = 0; i < listePorc.length; i++){
+				
+				/* var li = document.createElement("li");
+				li.classList.add("list-group-item");
+				
+				var t = document.createTextNode(listePorc[i]);
+				li.appendChild(t);
+				document.getElementById("listArticle").appendChild(li)
+				li.setAttribute("onclick", "formSelectArticle.submit()");
+				li.innerHTML = listePorc[i]; */
+				
+  				var btn = document.createElement("button");
+  				btn.classList.add("btn");
+  				btn.classList.add("btn-outline-secondary");
+  				btn.classList.add("btn-lg");
+  				btn.setAttribute('name', 'valArticle');
+  				var t = document.createTextNode(listePorc[i]);
+  				btn.appendChild(t);
+  				document.getElementById("listArticle").appendChild(btn);
+     			btn.value = listePorc[i];
+
 			}
+		}
 			
 		function printLiAgneau() {
 				
-				for( var i = 0; i < listeAgneau.length; i++){
-					
-					var li = document.createElement("li");
-					li.classList.add("list-group-item");
-					
-					var t = document.createTextNode(listeAgneau[i]);
-					li.appendChild(t);
-					document.getElementById("listArticle").appendChild(li)
-					
-					li.innerHTML = listeAgneau[i];
-					
-				}
+			for( var i = 0; i < listeAgneau.length; i++){
+				
+			/* 	var li = document.createElement("li");
+				li.classList.add("list-group-item");
+				
+				var t = document.createTextNode(listeAgneau[i]);
+				li.appendChild(t);
+				document.getElementById("listArticle").appendChild(li)
+				li.setAttribute("onclick", "formSelectArticle.submit()");
+				li.innerHTML = listeAgneau[i];
+  	  			li.value = listeAgneau[i]; */
+  	  			
+  				var btn = document.createElement("button");
+  				btn.classList.add("btn");
+  				btn.classList.add("btn-outline-secondary");
+  				btn.classList.add("btn-lg");
+  				btn.setAttribute('name', 'valArticle');
+  				var t = document.createTextNode(listeAgneau[i]);
+  				btn.appendChild(t);
+  				document.getElementById("listArticle").appendChild(btn);
+     			btn.value = listeAgneau[i];
+
 			}
+		}
   		
   		let valCat = document.getElementById("valCategory").value;
   		

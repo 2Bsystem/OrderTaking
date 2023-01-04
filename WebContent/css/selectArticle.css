@@ -9,4 +9,11 @@
 
 #listArticle {
 	margin: 5px;
+	width: 80%;
+}
+
+#formSelectArticle{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 200px;
 }

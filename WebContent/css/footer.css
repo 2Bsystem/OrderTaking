@@ -1,5 +1,7 @@
 .footer-main {
-	margin-top: 150px;
-	height: 100px;
+ 	height: 100px;
 	padding: 0.20rem 1rem;
+	position: fixed;
+	width: 100%;
+    bottom: 0;
 }

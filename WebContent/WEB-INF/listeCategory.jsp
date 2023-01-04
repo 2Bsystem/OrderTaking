@@ -1,7 +1,8 @@
 <jsp:include page="header.jsp"/>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-	<form method="post" action="SelectArticle">
-		<h1>Liste category</h1>
+	<form id="category" method="post" action="SelectArticle">
+	
+	
 			<div id="listeCategory"> 
 			
 			</div>	

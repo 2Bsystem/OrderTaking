@@ -15,27 +15,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.mysql.cj.Session;
-
 /**
  * Servlet implementation class Home
  */
-@WebServlet("/SelectArticle")
-public class SelectArticle extends HttpServlet {
-	
+@WebServlet("/SaisieArticle")
+public class SaisieArticle extends HttpServlet {
 	
 //	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 //		
 //
-//		this.getServletContext().getRequestDispatcher( "/WEB-INF/selectionArticle.jsp" ).forward( request, response );
+//		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 //        
 //	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-
-		session.setAttribute("valCategory", request.getParameter("valCategory") );
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/selectionArticle.jsp" ).forward( request, response );
+		
+		
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
             
 	}
 

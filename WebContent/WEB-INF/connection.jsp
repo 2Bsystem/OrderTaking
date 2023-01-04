@@ -37,6 +37,13 @@
 		     </div>
 	  	   </form>
 		</div>
+		
+		
   	</section>
-    	
-<jsp:include page="footer.jsp"/>
+  	<div id="imgAccueil">
+		<figure class="image container logo-footer is-centered image" style="height: 130px; width: 210px;">
+ 	    	<img src="inc/groupe-bellon.png">
+    	</figure>
+  	</div>
+
+<%-- <jsp:include page="footer.jsp"/> --%>

@@ -21,12 +21,12 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/ListeRecap")
 public class ListeRecap extends HttpServlet {
 	
-	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		
-
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
-        
-	}
+//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+//		
+//
+//		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
+//        
+//	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
