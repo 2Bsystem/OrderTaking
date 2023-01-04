@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/listeRecap.css">
     <link rel="stylesheet" href="css/listeCategory.css">
     <link rel="stylesheet" href="css/selectArticle.css">
+    <link rel="stylesheet" href="css/saisieArticle.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/png" href="inc/favicon.ico" />
     

@@ -1,0 +1,22 @@
+@charset "ISO-8859-1";
+
+#bodySaisieArticle {
+	margin:10px;
+}
+
+.control {
+	margin-bottom:10px;
+}
+
+#btnValiderCommande {
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:100px;
+}
+
+#topSaisieArticle{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}

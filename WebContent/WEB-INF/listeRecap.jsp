@@ -26,7 +26,10 @@
 		</table>
 			
 <!-- 	<button id="btnAjoutCommande" type="button" class="btn btn-primary"> Ajout Commande </button>
- -->	
+ -->
+ <span class="icon is-large">
+ 	<i class="fas fa-plus-circle"></i>	
+ </span>
    <input id="btnAjoutCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Commande" style="background-color: #0063af; color:#fff;">
 	</div>
   	</form>
