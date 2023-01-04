@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+#listeCategory{
+	height: 500px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin-right: 10%;
+	margin-left: 10%;
+}

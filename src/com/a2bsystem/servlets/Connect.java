@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.a2bsystem.models.Constantes;
-
 @WebServlet("/Connect")
 public class Connect extends HttpServlet {
 
@@ -149,25 +147,15 @@ public class Connect extends HttpServlet {
 			session.setAttribute("code_pays_client_divers", null);
 			
 			session.setAttribute("login", Login);
-			String connectionUrl = "jdbc:sqlserver://" + Constantes.SERVEUR + ";databaseName=" + Constantes.BDD + ";user="
+			String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user="
 					+ Login + ";password=" + Password;
 			
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				request.setAttribute( "ids", "");
 				request.setAttribute("Connect", 1);
+								
 				
-				String SQL;
-				SQL = "EXEC q_2bp_java_web_order_get_vendeur @Foretagkod=" + foretagKod + "," 
-						                                   + "@Perssign='"  + Login + "';";
-				
-			
-				ResultSet rs = stmt.executeQuery(SQL);
-				if(rs.next()) {
-					session.setAttribute("vendeur",rs.getString("vendeur"));
-					session.setAttribute("nomVendeur", rs.getString("Nom_vendeur"));
-				}
-				
-				RequestDispatcher rd = request.getRequestDispatcher("/Order");
+				RequestDispatcher rd = request.getRequestDispatcher("/ListeRecap");
 				rd.forward(request, response);
 				
 				

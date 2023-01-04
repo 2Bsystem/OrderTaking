@@ -1,0 +1,10 @@
+@charset "ISO-8859-1";
+
+#bodyListeRecap{
+	display: flex;
+	flex-direction: column;
+}
+
+#btnAjoutCommande {
+	justify-content: center;
+}
