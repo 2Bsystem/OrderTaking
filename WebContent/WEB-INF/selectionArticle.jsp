@@ -1,11 +1,196 @@
 <jsp:include page="header.jsp"/>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-			<h1><%= request.getParameter("valCategory") %> </h1>
+	<div id="top">
+		<h1 class="btn btn-outline-info btn-lg"><%= request.getParameter("valCategory") %> </h1>
+		
+	</div>
 	
-	<form method="post" action="">
-			
 
+	<form method="post" action="">
 	
+		<ul id="listArticle" class="list-group">
+
+		</ul>
+
+		<input id="valCategory" type="hidden" value="<%= request.getParameter("valCategory") %>" >
   	</form>
+  	
+  	<script>
+  		listeBoeuf = [
+  			"Foie n°1",
+  			"Coeur",
+  			"Joue",
+  			"Langue C", 
+  			"Rognons",
+  			"Onglet", 
+  			"Tripes",
+  			"Gras double", 
+  			"Testicule", 
+  			"Queue", 
+  			"Côte Boeuf", 
+  			"MLT", 
+  			"Entrecôte", 
+  			"Filet Boeuf",
+  			"Hampe",
+  			"Faux Filet",
+  			"Os",
+  			"Bavette",
+  			"Paleron",
+  			"B Macreuse",
+  			"Basse Côte",
+  			"Rond Gite",
+  			"Coeur Rumsteak",
+  			"Deh"
+		];
+  		
+  		listeVeau = [
+  			"Tete n°1",
+  			"Cuir A Plat",
+  			"Foie BE",
+  			"Foie FR",
+  			"Coeurs",
+  			"Cervelles",
+  			"Cuir Roulé",
+  			"Joues",
+  			"Langues",
+  			"Pieds",
+  			"Rognons",
+  			"Jarret",
+  			"Carré",
+  			"Onglets",
+  			"Os",
+  			"Quasi",
+  			"Ris Coeur",
+  			"Ris Gorge",
+  			"Epaule",
+  			"Bas Carré",
+  			"Filet",
+  			"Noix",
+  			"Fraise",
+  			"Nerveux"
+  		];
+  		
+  		listePorc = [
+  			"Rognons",
+  			"Echine",
+  			"Foies",
+  			"Cervelles",
+  			"Filet Mignon",
+  			"Gorges",
+  			"Joues",
+  			"Crepines",
+  			"Bardes",
+  			"Langue",
+  			"Longe",
+  			"Carré"
+  		];
+  		
+  		listeAgneau = [
+  			"Ris",
+  			"Cervelles",
+  			"Fressures",
+  			"Langues",
+  			"Foies",
+  			"Coeurs",
+  			"Souris",
+  			"Carré",
+  			"Gigot",
+  			"Epaule",
+  			"Panse",
+  			"Rognon"
+  		];
+  		
+  		function printLiBoeuf() {
+  			
+  			for( var i = 0; i < listeBoeuf.length; i++){
+  	  			
+  	  			var li = document.createElement("li");
+  	  			li.classList.add("list-group-item");
+  	  			
+  	  			var t = document.createTextNode(listeBoeuf[i]);
+  	  			li.appendChild(t);
+  	  			document.getElementById("listArticle").appendChild(li)
+  	  			
+  	  			li.innerHTML = listeBoeuf[i];
+  	  			
+  	  		}
+  		}
+  		
+		function printLiVeau() {
+		  			
+		  			for( var i = 0; i < listeVeau.length; i++){
+		  	  			
+		  	  			var li = document.createElement("li");
+		  	  			li.classList.add("list-group-item");
+		  	  			
+		  	  			var t = document.createTextNode(listeVeau[i]);
+		  	  			li.appendChild(t);
+		  	  			document.getElementById("listArticle").appendChild(li)
+		  	  			
+		  	  			li.innerHTML = listeVeau[i];
+		  	  			
+		  	  		}
+		  		}
+		  		
+		function printLiPorc() {
+				
+				for( var i = 0; i < listePorc.length; i++){
+					
+					var li = document.createElement("li");
+					li.classList.add("list-group-item");
+					
+					var t = document.createTextNode(listePorc[i]);
+					li.appendChild(t);
+					document.getElementById("listArticle").appendChild(li)
+					
+					li.innerHTML = listePorc[i];
+					
+				}
+			}
+			
+		function printLiAgneau() {
+				
+				for( var i = 0; i < listeAgneau.length; i++){
+					
+					var li = document.createElement("li");
+					li.classList.add("list-group-item");
+					
+					var t = document.createTextNode(listeAgneau[i]);
+					li.appendChild(t);
+					document.getElementById("listArticle").appendChild(li)
+					
+					li.innerHTML = listeAgneau[i];
+					
+				}
+			}
+  		
+  		let valCat = document.getElementById("valCategory").value;
+  		
+  		switch(valCat) {
+  		
+	  		case "Boeuf":
+	  	  		console.log("Boeuf");
+	  	  		printLiBoeuf()
+				break;
+				
+	  		case "Veau":
+	  	  		console.log("Veau");
+		  	  	printLiVeau()
+				break;
+				
+	  		case "Porc":
+	  	  		console.log("Porc");
+		  	    printLiPorc()
+				break;
+				
+	  		case "Agneau":
+	  	  		console.log("Agneau");
+	  	  		printLiAgneau()
+				break;
+  		
+  		}
+
+  	</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 <jsp:include page="footer.jsp"/>

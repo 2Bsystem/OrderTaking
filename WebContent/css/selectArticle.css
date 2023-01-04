@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+#top {
+	display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 4px;
+}
+
+#listArticle {
+	margin: 5px;
+}
