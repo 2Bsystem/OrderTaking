@@ -47,7 +47,7 @@
 		</table>
 	</div>
 	
-	<form id="" method="post" action="">
+	<form method="post" action="ConfirmationCde">
 	
   		<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Impression" style="background-color: #0063af; color:#fff;">
 

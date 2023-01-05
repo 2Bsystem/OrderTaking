@@ -30,16 +30,9 @@ import com.a2bsystem.models.Cli;
 @WebServlet("/RecapImp")
 public class RecapImp extends HttpServlet {
 	
-//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-//		
-//
-//		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
-//        
-//	}
-
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-
+		
 		session.setAttribute("articleClient", request.getParameter("articleClient") );
 		session.setAttribute("articleLot", request.getParameter("articleLot") );
 		session.setAttribute("articleQuantite", request.getParameter("articleQuantite") );
