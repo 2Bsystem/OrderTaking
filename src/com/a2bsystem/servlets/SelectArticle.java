@@ -35,6 +35,8 @@ public class SelectArticle extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("valCategory", request.getParameter("valCategory") );
+		session.setAttribute("valArticle", request.getParameter("valArticle") );
+
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/selectionArticle.jsp" ).forward( request, response );
             
 	}
