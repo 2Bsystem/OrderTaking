@@ -31,15 +31,13 @@ import com.a2bsystem.models.Historique;
 public class ListeRecap extends HttpServlet {
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		HttpSession session = request.getSession();
-		//var foretagKod = session.getAttribute("foretagKod");
+
+		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande 1000,'" + Login + "';";
-        	
         	System.out.println(SQL);
         	ResultSet rs = stmt.executeQuery(SQL);
             List<Historique> historiques = new ArrayList<Historique>();
@@ -78,10 +76,6 @@ public class ListeRecap extends HttpServlet {
         catch (Exception e) {
             e.printStackTrace();
         } 
-		
-		
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
-            
 	}
-
 }

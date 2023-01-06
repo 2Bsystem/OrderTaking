@@ -23,63 +23,9 @@ public class Connect extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		var foretagKod = session.getAttribute("foretagKod");
 		String prev_page = request.getParameter("prev_page");
+				
 		if(prev_page.equals("deconnexion")) {			
-			session.setAttribute( "date", null);
-					
-			session.setAttribute( "article", null);
-			session.setAttribute( "code_article", null);
-			
-			session.setAttribute( "client", null);
-			session.setAttribute( "code_client", null);
-			
-			session.setAttribute( "code_articleOA", null);
-			session.setAttribute( "num_commande", null);
-			session.setAttribute( "detailcmdes", null);
-			session.setAttribute("msg-validation", null);
-    		session.setAttribute("q-validation", null);
-			
-			session.setAttribute( "client_commande", null);
-			session.setAttribute( "code_client_commande", null);
-			session.setAttribute( "date_commande", null);
-			session.setAttribute( "num_commande_commande", null);
-			session.setAttribute( "id_tournee_commande", null);
-			session.setAttribute( "tournee_commande", null);
-			session.setAttribute( "gamme_commande", null);
-			session.setAttribute( "exist_commande", null);
-			
-			session.setAttribute("code_art", null);
-			session.setAttribute("lib_art", null);
-			session.setAttribute("ligne", null);
-			session.setAttribute("gamme", null);
-			session.setAttribute("ord_rest_nr", null);
-			session.setAttribute("ord_rad_nr_str_pos", null);
-			session.setAttribute("dummy_unique_id", null);
-			session.setAttribute("qte_cde", null);
-			session.setAttribute("unite", null);
-			session.setAttribute("mode", null);
-			
-			session.setAttribute("error", "no");
-			
-			//remplacement d'article
-    		session.setAttribute("errorRemplacement", null);
-			
-    		//order
-			session.setAttribute("client_order", null);
-			session.setAttribute("code_client_order", null);
-			session.setAttribute("num_order", null);
-			session.setAttribute("exist_order", null);
-			session.setAttribute("client_divers_order", "0");
-			session.setAttribute("nom_divers_order", null);
-			session.setAttribute("adresse_divers_order", null);
-			session.setAttribute("adresse2_client_divers", null);
-			session.setAttribute("cp_divers_order", null);
-			session.setAttribute("ville_divers_order", null);
-			session.setAttribute("code_pays_client_divers", null);
-
-
-			
 			session.setAttribute("login", null);
 			request.setAttribute( "ids", "");
 			request.setAttribute("erreur_url", false);
@@ -90,62 +36,7 @@ public class Connect extends HttpServlet {
 		else {
 			// Get config
 			String Login = request.getParameter("login");
-			String Password = request.getParameter("password");
-			
-			session.setAttribute( "date", null);
-			
-			session.setAttribute( "article", null);
-			session.setAttribute( "code_article", null);
-			
-			session.setAttribute( "client", null);
-			session.setAttribute( "code_client", null);
-			
-			session.setAttribute( "code_articleOA", null);
-			session.setAttribute( "num_commande", null);
-			session.setAttribute( "detailcmdes", null);
-			session.setAttribute("msg-validation", null);
-    		session.setAttribute("q-validation", null);
-			
-			session.setAttribute( "client_commande", null);
-			session.setAttribute( "code_client_commande", null);
-			session.setAttribute( "date_commande", null);
-			session.setAttribute( "num_commande_commande", null);
-			session.setAttribute( "id_tournee_commande", null);
-			session.setAttribute( "tournee_commande", null);
-			session.setAttribute( "gamme_commande", null);
-			session.setAttribute( "exist_commande", null);
-			
-			session.setAttribute("code_art", null);
-			session.setAttribute("lib_art", null);
-			session.setAttribute("ligne", null);
-			session.setAttribute("gamme", null);
-			session.setAttribute("ord_rest_nr", null);
-			session.setAttribute("ord_rad_nr_str_pos", null);
-			session.setAttribute("dummy_unique_id", null);
-			session.setAttribute("qte_cde", null);
-			session.setAttribute("unite", null);
-			session.setAttribute("mode", null);
-			
-			session.setAttribute("lot_lot", null);
-			
-			session.setAttribute("error", "no");
-			
-			//remplacement d'article
-    		session.setAttribute("errorRemplacement", null);
-			
-    		//order
-			session.setAttribute( "client_order", null);
-			session.setAttribute( "code_client_order", null);
-			session.setAttribute("num_order", null);
-			session.setAttribute( "exist_order", null);
-			session.setAttribute("client_divers_order", "0");
-			session.setAttribute("nom_divers_order", null);
-			session.setAttribute("adresse_divers_order", null);
-			session.setAttribute("adresse2_client_divers", null);
-			session.setAttribute("cp_divers_order", null);
-			session.setAttribute("ville_divers_order", null);
-			session.setAttribute("code_pays_client_divers", null);
-			
+			String Password = request.getParameter("password");						
 			session.setAttribute("login", Login);
 			String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user="
 					+ Login + ";password=" + Password;
@@ -153,12 +44,9 @@ public class Connect extends HttpServlet {
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				request.setAttribute( "ids", "");
 				request.setAttribute("Connect", 1);
-								
-				
+			
 				RequestDispatcher rd = request.getRequestDispatcher("/ListeRecap");
 				rd.forward(request, response);
-				
-				
 
 			} catch (Exception e) {
 				request.setAttribute( "ids", "Identifiants incorrects");
@@ -171,5 +59,4 @@ public class Connect extends HttpServlet {
 			}
 		}
 	}
-
 }

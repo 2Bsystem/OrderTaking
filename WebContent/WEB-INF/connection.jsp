@@ -36,12 +36,14 @@
 		     </div>
 	  	   </form>
 		</div>
-		
-		
+
   	</section>
   	<div id="imgAccueil">
-		<figure class="image container logo-footer is-centered image" style="height: 130px; width: 210px;">
+		<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
  	    	<img src="inc/groupe-bellon.png">
+    	</figure>
+    	<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
+ 	    	<img src="inc/logoSOA.png">
     	</figure>
   	</div>
 
