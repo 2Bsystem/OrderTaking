@@ -15,6 +15,7 @@
 			  </thead>
 			  <tbody>
 			  <%
+			  if(request.getAttribute("historiques") != null){
 		      		for (Historique histo : (List<Historique>) request.getAttribute("historiques")) {
 		        %>
 			    <tr>
@@ -25,6 +26,7 @@
 
 			    </tr>
 			       <% } 
+			  }
 				%>
 			  </tbody>
 			</table>

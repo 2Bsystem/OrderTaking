@@ -7,13 +7,21 @@
     margin-bottom: 4px;
 }
 
-#listArticle {
+ #listArticle {
 	margin: 5px;
-	width: 80%;
-}
+	width: 85%;
+} 
 
 #formSelectArticle{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-bottom: 200px;
+    margin-left: 10%;
 }
+
+#inputSaisieArt {
+	margin: 5px;
+	width: 85%;
+}
+ 

@@ -1,13 +1,16 @@
 <jsp:include page="header.jsp"/>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 	
-	<p id="titleCardRecap" class="h4">Recapitulation Commande</p>
+	<p id="titleCardRecap" class="h4">Recapitulatif Commande</p>
 	
-
 	<div id="cardRecap" class="card" >
 	  <div id="cardHeader" class="card-header">
 	    <h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
-		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+	    <%if(session.getAttribute("inputSaisieArticle") == null) { %>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+		<%} else {%>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+		<% } %>
 	  </div>
 	  
 	      <h5 id="titleCardRecap" class="card-title text-center"><%= session.getAttribute("articleClient") %></h5>
@@ -28,7 +31,7 @@
 		      <td><%= session.getAttribute("articleUnite") %></td>
 		    </tr>
 		    <tr>
-		      <td>Commentaire</td>
+		      <td>Com</td>
 		      <td><%= session.getAttribute("articleCommentaire") %></td>
 		    </tr>
 		    <tr>
@@ -45,7 +48,18 @@
 		    </tr>
 		  </tbody>
 		</table>
+		
+		
+		
 	</div>
+	
+	<div id="cardCommentaire" class="card" >
+		  <div class="card-body">
+		    <h5 class="card-title">Commentaire</h5>
+		    <p class="card-text"><%= session.getAttribute("articleCommentaire2") %></p>
+		    
+		  </div>
+		</div>
 	
 	<form method="post" action="ConfirmationCde">
 	

@@ -40,6 +40,7 @@ public class RecapImp extends HttpServlet {
 		session.setAttribute("articlePrix", request.getParameter("articlePrix") );
 		session.setAttribute("articleUnite", request.getParameter("articleUnite") );
 		session.setAttribute("articleCommentaire", request.getParameter("articleCommentaire") );
+		session.setAttribute("articleCommentaire2", request.getParameter("articleCommentaire2") );
 		session.setAttribute("articleOrigine", request.getParameter("articleOrigine") );
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/recapImp.jsp" ).forward( request, response );

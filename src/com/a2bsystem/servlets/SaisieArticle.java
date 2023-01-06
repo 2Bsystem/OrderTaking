@@ -30,13 +30,6 @@ import com.a2bsystem.models.Cli;
 @WebServlet("/SaisieArticle")
 public class SaisieArticle extends HttpServlet {
 	
-//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-//		
-//
-//		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
-//        
-//	}
-
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
 		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
@@ -76,7 +69,11 @@ public class SaisieArticle extends HttpServlet {
         } 
 
 		session.setAttribute("valArticle", request.getParameter("valArticle") );
+		session.setAttribute("inputSaisieArticle", request.getParameter("inputSaisieArticle") );
+
 		System.out.println(session.getAttribute("valArticle"));
+		System.out.println(session.getAttribute("inputSaisieArticle"));
+
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}
 }

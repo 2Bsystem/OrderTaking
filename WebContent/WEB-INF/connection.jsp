@@ -16,7 +16,6 @@
 						</span>
 					</div>
 				  </div>
-				  
 							
 				   <!-- MOT DE PASSE -->	
 				   <div class="field">

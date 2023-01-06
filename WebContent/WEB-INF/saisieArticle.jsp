@@ -5,25 +5,29 @@
 
 <div id="topSaisieArticle">
 	<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
-	<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+	 <%if(session.getAttribute("inputSaisieArticle") == null) { %>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+		<%} else {%>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+		<% } %>	
 </div>
 		
 <form id="articleForm" method="post" action="RecapImp">
 	<div id="bodySaisieArticle">
 	
 		<div class="field">
-			<label class="label">Choix du client</label>
-			 <div class="control">
-				 <div class="select is-danger" >
-					 <select name="articleClient">
+			<div class="control">
+				<div class="select is-danger" >
+					<select name="articleClient" required>
+						<option value="">Choix du client</option>
+					 
 					 <%
 				      	for (Cli client : (List<Cli>) request.getAttribute("clients")) {
 				      %>
 						 <option><%= client.nomAppel %></option>
 						 
-						 
-						 <% } 
-							%>
+					 <% } 
+					  %>
 					 </select>
 				 </div>
 			 </div>
@@ -33,7 +37,7 @@
 			<input class="input" type="number" placeholder="N° Lot" name="articleLot">
 		</div>
 		<div class="control">
-			<input class="input is-danger" type="number" placeholder="Quantité" name="articleQuantite">
+			<input class="input is-danger" type="number" placeholder="Quantité" name="articleQuantite" required>
 		</div>
 		<div class="field">
 			<label class="label">Unité</label>
@@ -48,7 +52,7 @@
 			</div>
 		</div>
 		<div class="field">
-			<label class="label">Commentaire</label>
+			<label class="label">Com</label>
 			<div class="control">
 				<div class="select" >
 					<select name="articleCommentaire">
@@ -79,31 +83,15 @@
 		<div class="control">
 			<input class="input" type="number" placeholder="Prix" name="articlePrix">
 		</div>
+		<div class="field">
+		  <div class="control">
+		    <textarea class="textarea" placeholder="Commentaire" name="articleCommentaire2"></textarea>
+		  </div>
+		</div>
 
 	</div>
   	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider" style="background-color: #0063af; color:#fff;">
 	
 </form>
-<script>
-	
-/* 	function doForm () {
-		
-		var data = new FormData ();
-		
-		var all = document.querySelectorAll("#articleForm input, #articleForm select ");
-		
-		for (let field of all) {
-			if(field.type != "submit" && field.type != "button") {
-				data.append(field.name, field.value)
-			}
-		}
-		
-		for (let [k, v] of data.entries()) { console.log(k, v); }
-		  return false;
-		
-	}
-	
 
-	doForm (); */
-</script>
 <jsp:include page="footer.jsp"/>

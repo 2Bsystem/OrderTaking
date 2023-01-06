@@ -13,3 +13,16 @@
 	margin-top: 22%;
 	margin-bottom: 22%;
 }
+
+ @media screen and (orientation:landscape) {
+ 
+ 	 #category{
+		margin-top: 10%;
+	}
+	  
+ 	#listeCategory{	
+ 		height: auto;
+ 		width: auto;
+ 		flex-direction: row;
+ 	}
+  }

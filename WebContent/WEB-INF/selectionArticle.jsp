@@ -3,19 +3,26 @@
 	<div id="top">
 		<h1 class="btn btn-outline-info btn-lg"><%= request.getParameter("valCategory") %> </h1>	
 	</div>
-	
-	<form id="formSelectArticle" method="post" action="SaisieArticle">
-	
-		<div id="listArticle" class="btn-group-vertical">
-			
-		</div>
-
- 		<input id="valCategory" type="hidden" value="<%= request.getParameter("valCategory") %>" >
-  	</form>
-  	
+		<div id ="formSelectArticle">
+			<form id="formInput" method="post" action="SaisieArticle">
+				<input id="inputSaisieArt" type="text" class="form-control" name="inputSaisieArticle" placeholder="Saisie Libre" aria-label="Username" aria-describedby="basic-addon1">
+			</form>
+			<form method="post" action="SaisieArticle">
+				<div id="listArticle" class="btn-group-vertical">
+				</div>
+		 		<input id="valCategory" type="hidden" value="<%= request.getParameter("valCategory") %>" >
+		  	</form>
+	  	</div>
   	<script>
+  	
+  	$(document).ready(function(){
+  	   $('#inputSaisieArt').live('blur',function(){
+  	      $('#formInput').submit();
+  	   });
+  	});
+  	
   		listeBoeuf = [
-  			"Foie n°1",
+  			"Foie n1",
   			"Coeur",
   			"Joue",
   			"Langue C", 
@@ -25,9 +32,9 @@
   			"Gras double", 
   			"Testicule", 
   			"Queue", 
-  			"Côte Boeuf", 
+  			"Cote Boeuf", 
   			"MLT", 
-  			"Entrecôte", 
+  			"Entrecote", 
   			"Filet Boeuf",
   			"Hampe",
   			"Faux Filet",
@@ -35,33 +42,33 @@
   			"Bavette",
   			"Paleron",
   			"B Macreuse",
-  			"Basse Côte",
+  			"Basse Cote",
   			"Rond Gite",
   			"Coeur Rumsteak",
   			"Deh"
 		];
   		
   		listeVeau = [
-  			"Tete n°1",
+  			"Tete n1",
   			"Cuir A Plat",
   			"Foie BE",
   			"Foie FR",
   			"Coeurs",
   			"Cervelles",
-  			"Cuir Roulé",
+  			"Cuir Roule",
   			"Joues",
   			"Langues",
   			"Pieds",
   			"Rognons",
   			"Jarret",
-  			"Carré",
+  			"Carre",
   			"Onglets",
   			"Os",
   			"Quasi",
   			"Ris Coeur",
   			"Ris Gorge",
   			"Epaule",
-  			"Bas Carré",
+  			"Bas Carre",
   			"Filet",
   			"Noix",
   			"Fraise",
@@ -80,7 +87,7 @@
   			"Bardes",
   			"Langue",
   			"Longe",
-  			"Carré"
+  			"Carre"
   		];
   		
   		listeAgneau = [
@@ -91,7 +98,7 @@
   			"Foies",
   			"Coeurs",
   			"Souris",
-  			"Carré",
+  			"Carre",
   			"Gigot",
   			"Epaule",
   			"Panse",

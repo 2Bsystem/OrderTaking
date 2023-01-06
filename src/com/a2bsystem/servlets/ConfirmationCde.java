@@ -42,6 +42,19 @@ public class ConfirmationCde extends HttpServlet {
 		
 		String clientString = (String) session.getAttribute("articleClient");
 		String cleanClient  = clientString.replace("'", " ");
+		String valArticle = "";
+		String articlePrix = (String) session.getAttribute("articlePrix");
+
+		
+		 if(session.getAttribute("inputSaisieArticle") == null) { 
+			  valArticle = (String) session.getAttribute("valArticle");
+		 	} else {
+			  valArticle = (String) session.getAttribute("inputSaisieArticle");
+		 } 
+		 
+		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
+			 articlePrix = "0";
+		 }
 		
 		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		//var foretagKod = session.getAttribute("foretagKod");
@@ -54,10 +67,11 @@ public class ConfirmationCde extends HttpServlet {
 																	 "',@Quantite=" + session.getAttribute("articleQuantite") +
 																	 ",@Unite='" + session.getAttribute("articleUnite") +
 																	 "',@Categorie='" + session.getAttribute("valCategory") +
-																	 "',@Article='" + session.getAttribute("valArticle") +
+																	 "',@Article='" + valArticle +
 																	 "',@Origine='" + session.getAttribute("articleOrigine") +
 																	 "',@Commentaire='" + session.getAttribute("articleCommentaire") +
-																	 "',@Prix=" + session.getAttribute("articlePrix") +";";
+																	 "',@Commentaire2='" + session.getAttribute("articleCommentaire2") +
+																	 "',@Prix=" + articlePrix +";";
         	
         	System.out.println(SQL);
 			ResultSet rs = stmt.executeQuery(SQL);

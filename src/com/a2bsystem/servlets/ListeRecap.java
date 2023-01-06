@@ -30,13 +30,6 @@ import com.a2bsystem.models.Historique;
 @WebServlet("/ListeRecap")
 public class ListeRecap extends HttpServlet {
 	
-//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-//		
-//
-//		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
-//        
-//	}
-
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
 		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
