@@ -34,7 +34,7 @@ public class RecapImp extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
+		String connectionUrl = "jdbc:sqlserver://217.181.249.59;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 
 		String Login = (String) session.getAttribute("login");
 

@@ -32,7 +32,7 @@ public class SaisieArticle extends HttpServlet {
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
+		String connectionUrl = "jdbc:sqlserver://217.181.249.59;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		HttpSession session = request.getSession();
 		//var foretagKod = session.getAttribute("foretagKod");
 		String Login = (String) session.getAttribute("login");

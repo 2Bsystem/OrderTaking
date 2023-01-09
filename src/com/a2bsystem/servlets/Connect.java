@@ -40,7 +40,7 @@ public class Connect extends HttpServlet {
 			String Login = request.getParameter("login");
 			String Password = request.getParameter("password");						
 			session.setAttribute("login", Login);
-			String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user="
+			String connectionUrl = "jdbc:sqlserver://217.181.249.59;databaseName=MASTER_V2;user="
 					+ Login + ";password=" + Password;
 			
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
