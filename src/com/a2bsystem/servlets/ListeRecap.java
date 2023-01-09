@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.a2bsystem.models.Cli;
-import com.a2bsystem.models.Historique;
+import com.a2bsystem.models.histoClient;
 
 /**
  * Servlet implementation class Home
@@ -37,39 +37,30 @@ public class ListeRecap extends HttpServlet {
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande 1000,'" + Login + "';";
+        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_client 1000,'" + Login + "';";
         	System.out.println(SQL);
         	ResultSet rs = stmt.executeQuery(SQL);
-            List<Historique> historiques = new ArrayList<Historique>();
+            List<histoClient> histoClients = new ArrayList<histoClient>();
         	if(rs.next()) {
-        		Historique historique = new Historique();
-        		historique.client = rs.getString("FtgNr");
-        		historique.quantite = rs.getString("Quantite");
-        		historique.unite = rs.getString("Unite");
-        		historique.categorie = rs.getString("Categorie");
-        		historique.article = rs.getString("Article");
-        		historique.origine = rs.getString("Origine");
-        		historique.commentaire = rs.getString("Commentaire");
-        		historique.prix = rs.getString("Prix");
-        		historique.date = rs.getString("Date");
+        		histoClient histoClient = new histoClient();
+        		histoClient.id = rs.getString("Impression");
+        		histoClient.client = rs.getString("FtgNr");
+        		histoClient.totalPrix = rs.getString("Total");
+        		histoClient.date = rs.getString("DateValidation");
 
-        		historiques.add(historique);
+        		histoClients.add(histoClient);
     		
             	while(rs.next()) {
-            		Historique historique2 = new Historique();
-            		historique2.client = rs.getString("FtgNr");
-            		historique2.quantite = rs.getString("Quantite");
-            		historique2.unite = rs.getString("Unite");
-            		historique2.categorie = rs.getString("Categorie");
-            		historique2.article = rs.getString("Article");
-            		historique2.origine = rs.getString("Origine");
-            		historique2.commentaire = rs.getString("Commentaire");
-            		historique2.prix = rs.getString("Prix");
-            		historique2.date = rs.getString("Date");
-            		historiques.add(historique2);
+            		histoClient histoClient2 = new histoClient();
+            		histoClient2.id = rs.getString("Impression");
+            		histoClient2.client = rs.getString("FtgNr");
+            		histoClient2.totalPrix = rs.getString("Total");
+            		histoClient2.date = rs.getString("DateValidation");
+
+            		histoClients.add(histoClient2);
             	}
                     
-            	request.setAttribute( "historiques", historiques );
+            	request.setAttribute( "histoClients", histoClients );
             	
             }
         }

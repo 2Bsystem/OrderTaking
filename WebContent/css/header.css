@@ -21,3 +21,12 @@ body section.hero.is-very-small {
 	top:0;
 	z-index: 5;
 }
+
+#containerHeader{
+	display:flex;
+	justify-content: space-between;
+}
+
+#titleHeader {
+    margin-top: 7%;
+}

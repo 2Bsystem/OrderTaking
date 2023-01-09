@@ -42,9 +42,7 @@
 		<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
  	    	<img src="inc/groupe-bellon.png">
     	</figure>
-    	<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
- 	    	<img src="inc/logoSOA.png">
-    	</figure>
+    
   	</div>
 
 <%-- <jsp:include page="footer.jsp"/> --%>

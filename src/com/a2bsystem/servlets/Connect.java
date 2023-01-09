@@ -23,19 +23,19 @@ public class Connect extends HttpServlet {
 		response.setCharacterEncoding("UTF-8");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		String prev_page = request.getParameter("prev_page");
+		//String prev_page = request.getParameter("prev_page");
 		 //session.setAttribute("articleClient", null );
 
 				
-		if(prev_page.equals("deconnexion")) {			
-			session.setAttribute("login", null);
-			request.setAttribute( "ids", "");
-			request.setAttribute("erreur_url", false);
-			request.setAttribute("erreur_param", false);
-			RequestDispatcher rd = request.getRequestDispatcher("/Home");
-			rd.forward(request, response);
-		}
-		else {
+//		if(session) {			
+//			session.setAttribute("login", null);
+//			request.setAttribute( "ids", "");
+//			request.setAttribute("erreur_url", false);
+//			request.setAttribute("erreur_param", false);
+//			RequestDispatcher rd = request.getRequestDispatcher("/Home");
+//			rd.forward(request, response);
+//		}
+//		else {
 			// Get config
 			String Login = request.getParameter("login");
 			String Password = request.getParameter("password");						
@@ -60,5 +60,5 @@ public class Connect extends HttpServlet {
 				out.println(e);
 			}
 		}
-	}
+	//}
 }

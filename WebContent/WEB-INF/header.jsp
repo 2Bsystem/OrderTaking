@@ -23,13 +23,30 @@
   
 	<body >
 		    <section class="hero is-very-small" style="background-color: #72787e;">
-			   <div class="level">
+			  <!--  <div class="level">
 			   		<div class="level-left">
 			      		<h1 class="title is-5 has-text-white">
 			        		2B ORDER TAKING
 			      		</h1>
 		      		</div>
-		      		
+		      		<div class="level-right">
+			      		<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
+				 	    	<img src="inc/logoSOA.png">
+				    	</figure>
+			    	</div>
+		      	</div> -->
+		      	
+		      	 <div id="containerHeader">
+			   		<div id="titleHeader">
+			      		<h1 class="title is-5 has-text-white">
+			        		2B ORDER TAKING
+			      		</h1>
+		      		</div>
+		      		<div id="logoHeader">
+			      		<figure class="image container logo-footer image" style="height: 80px; width: 130px;">
+				 	    	<img src="inc/logoSOA.png">
+				    	</figure>
+			    	</div>
 		      	</div>
 			</section>
 		

@@ -1,19 +1,25 @@
     <!-- FOOTER -->
     <footer id="footer" class="footer-main" style="background-color: #72787e;">
     <div class="level p-1">
+	
     	<div class="level-item"></div>
 	    	<div class="level-item">
+	    	<form method="post" action="Connect">
+			  		<input type="submit" class="btn btn-light" value="Deconnexion" >
+				</form> 
 			    <div class="container has-text-centered">
 				  <figure class="image container logo-footer is-centered image" style="height: 58px; width: 144px;">
 			  	    <img src="inc/groupe-bellon.png">
 				  </figure>
 				  
 				</div>
-				<form>
-			  		<input type="button" class="btn btn-light" value="Retour" onclick="history.back()">
-				</form>
+<!-- 				<a href="http://localhost:8080/OrderTaking/Connect" class="btn btn-light">Accueil</a>
+ -->			<!-- 	 <form method="post" action="Home">
+			  		<input type="submit" class="btn btn-light" value="Accueil" >
+				</form>   -->
+				
 			</div>
-					
+
 	</div>
   </footer>
 

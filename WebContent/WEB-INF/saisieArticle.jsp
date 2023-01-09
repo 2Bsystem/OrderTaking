@@ -36,8 +36,8 @@
 		
 		<% } else { %>
 			<div class="control">
-			<input class="input" type="text" placeholder="<%= session.getAttribute("articleClient") %>" name="articleClient" disabled>
-		</div>
+				<input class="input" type="text" placeholder="<%= session.getAttribute("articleClient") %>" name="articleClient" disabled>
+			</div>
 		<%} %>
 		
 		<div class="control">
