@@ -6,19 +6,20 @@
 <div id="topSaisieArticle">
 	<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
 	 <%if(session.getAttribute("inputSaisieArticle") == null) { %>
-			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
-		<%} else {%>
-			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
-		<% } %>	
+		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+	<%} else {%>
+		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+	<% } %>	
 </div>
 		
-<form id="articleForm" method="post" action="RecapImp">
+<form id="articleForm" method="post" action="">
 	<div id="bodySaisieArticle">
 	
+	<% if (session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") { %>
 		<div class="field">
 			<div class="control">
 				<div class="select is-danger" >
-					<select name="articleClient" required>
+					<select id="selectClient" name="articleClient" required>
 						<option value="">Choix du client</option>
 					 
 					 <%
@@ -32,6 +33,12 @@
 				 </div>
 			 </div>
 		</div>
+		
+		<% } else { %>
+			<div class="control">
+			<input class="input" type="text" placeholder="<%= session.getAttribute("articleClient") %>" name="articleClient" disabled>
+		</div>
+		<%} %>
 		
 		<div class="control">
 			<input class="input" type="number" placeholder="N° Lot" name="articleLot">
@@ -85,13 +92,34 @@
 		</div>
 		<div class="field">
 		  <div class="control">
-		    <textarea class="textarea" placeholder="Commentaire" name="articleCommentaire2"></textarea>
+		    <textarea id="textareaForm" class="textarea" placeholder="Commentaire" name="articleCommentaire2"></textarea>
 		  </div>
 		</div>
 
 	</div>
-  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider" style="background-color: #0063af; color:#fff;">
+  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
+  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
 	
 </form>
+
+<script>
+	let selectClient = document.getElementById('selectClient');
+	let btnSaisieArticle = document.getElementById('btnSaisieArticle');
+	let btnValiderCommande = document.getElementById('btnValiderCommande');
+	let formSaisie = document.getElementById('articleForm');
+	
+	
+	 btnSaisieArticle.onclick = function() {
+		//selectClient.setAttribute("disabled", false); 
+		formSaisie.action = 'AjoutArticle';
+	    
+	} 
+	
+	btnValiderCommande.onclick = function() {
+		formSaisie.action = 'RecapImp';
+	    
+	} 
+
+</script>
 
 <jsp:include page="footer.jsp"/>

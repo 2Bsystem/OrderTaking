@@ -24,6 +24,8 @@ public class Connect extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
 		String prev_page = request.getParameter("prev_page");
+		 //session.setAttribute("articleClient", null );
+
 				
 		if(prev_page.equals("deconnexion")) {			
 			session.setAttribute("login", null);

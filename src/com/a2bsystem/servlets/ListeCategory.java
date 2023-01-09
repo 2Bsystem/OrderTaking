@@ -29,8 +29,10 @@ public class ListeCategory extends HttpServlet {
 //	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		
-		
+		HttpSession session = request.getSession();
+
+		System.out.println("listCategory ArticleClient " + session.getAttribute("articleClient"));
+
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeCategory.jsp" ).forward( request, response );
             
 	}

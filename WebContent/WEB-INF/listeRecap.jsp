@@ -13,7 +13,7 @@
 			      <th scope="col">Date</th>
 			    </tr>
 			  </thead>
-			  <tbody>
+			 <%--  <tbody>
 			  <%
 			  if(request.getAttribute("historiques") != null){
 		      		for (Historique histo : (List<Historique>) request.getAttribute("historiques")) {
@@ -28,7 +28,7 @@
 			       <% } 
 			  }
 				%>
-			  </tbody>
+			  </tbody> --%>
 			</table>
 
 	   <input id="btnAjoutCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Commande" style="background-color: #0063af; color:#fff;">

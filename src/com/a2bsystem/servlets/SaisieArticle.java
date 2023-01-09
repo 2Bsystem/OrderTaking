@@ -70,9 +70,12 @@ public class SaisieArticle extends HttpServlet {
 
 		session.setAttribute("valArticle", request.getParameter("valArticle") );
 		session.setAttribute("inputSaisieArticle", request.getParameter("inputSaisieArticle") );
+		
 
 		System.out.println(session.getAttribute("valArticle"));
 		System.out.println(session.getAttribute("inputSaisieArticle"));
+		System.out.println(session.getAttribute("articleClient"));
+
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}

@@ -28,8 +28,8 @@ import com.a2bsystem.models.Historique;
 /**
  * Servlet implementation class Home
  */
-@WebServlet("/RecapImp")
-public class RecapImp extends HttpServlet {
+@WebServlet("/ConfCommande")
+public class ConfCommande extends HttpServlet {
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -38,16 +38,8 @@ public class RecapImp extends HttpServlet {
 
 		String Login = (String) session.getAttribute("login");
 
-		if(session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") {
-		
-			session.setAttribute("articleClient", request.getParameter("articleClient") );
-		}
-		
-//		if(session.getAttribute("articlePrix") == null || session.getAttribute("articlePrix") == "") {
-//			
-//			session.setAttribute("articlePrix", request.getParameter("articlePrix") );
-//		}
-		
+		/*
+		session.setAttribute("articleClient", request.getParameter("articleClient") );
 		session.setAttribute("articleLot", request.getParameter("articleLot") );
 		session.setAttribute("articleQuantite", request.getParameter("articleQuantite") );
 		session.setAttribute("articlePoids", request.getParameter("articlePoids") );
@@ -57,44 +49,43 @@ public class RecapImp extends HttpServlet {
 		session.setAttribute("articleCommentaire2", request.getParameter("articleCommentaire2") );
 		session.setAttribute("articleOrigine", request.getParameter("articleOrigine") );
 		
-		System.out.println("artCli RecapImp " + session.getAttribute("articleClient"));
+		
+		*/
+		
+		//session.setAttribute("articleClient", request.getParameter("articleClient") );
+
+		
+		session.setAttribute("impression1", request.getParameter("impression1"));
+		session.setAttribute("impression2", request.getParameter("impression2"));
+
+    	System.out.println("1  1 " + session.getAttribute("impression1"));
+    	
+    	String impressionString = "";
+    	
+    	if(session.getAttribute("impression1") == null || session.getAttribute("impression1") == "" ) {
+    		
+    		impressionString = (String) session.getAttribute("impression2");
+    	} else {
+    		impressionString = (String) session.getAttribute("impression1");
+
+    	}
+
+		
 		String clientString = (String) session.getAttribute("articleClient");
 		String cleanClient  = clientString.replace("'", " ");
-		String valArticle = "";
-		String articlePrix = (String) session.getAttribute("articlePrix");
 		
-		 if(session.getAttribute("inputSaisieArticle") == null) { 
-			  valArticle = (String) session.getAttribute("valArticle");
-		 	} else {
-			  valArticle = (String) session.getAttribute("inputSaisieArticle");
-		 } 
-		 
-		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
-			 session.setAttribute("articlePrix", 0);
-		 }
+		  try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
+	        	String SQL = "EXEC q_2bp_java_web_order_taking_confirmation @ForetagKod=1000" +
+																			 ", @Perssign='" + Login +
+																			 "',@FtgNr='" + cleanClient + 
+        																	 "',@Printer='" + impressionString + "';";
+	        	System.out.println(SQL);
+				ResultSet rs = stmt.executeQuery(SQL);
+	        }
+	        catch (Exception e) {
+	            e.printStackTrace();
+	        } 
 		
-		//var foretagKod = session.getAttribute("foretagKod");
-		//request.setAttribute("prev_page", "client");
-        try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article @ForetagKod=1000" +
-																		 ", @Perssign='" + Login +
-																		 "',@FtgNr='" + cleanClient +
-																		 "',@Quantite=" + session.getAttribute("articleQuantite") +
-																		 ",@Unite='" + session.getAttribute("articleUnite") +
-																		 "',@Categorie='" + session.getAttribute("valCategory") +
-																		 "',@Article='" + valArticle +
-																		 "',@Origine='" + session.getAttribute("articleOrigine") +
-																		 "',@Commentaire='" + session.getAttribute("articleCommentaire") +
-																		 "',@Commentaire2='" + session.getAttribute("articleCommentaire2") +
-																		 "',@Prix=" + session.getAttribute("articlePrix") +";";
-        	
-        	System.out.println(SQL);
-			ResultSet rs = stmt.executeQuery(SQL);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        } 
-        
 		 try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 	        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande 1000,'" + Login + "';";
 	        	
@@ -136,6 +127,7 @@ public class RecapImp extends HttpServlet {
 	        catch (Exception e) {
 	            e.printStackTrace();
 	        } 
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/recapImp.jsp" ).forward( request, response );
+
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
 	}
 }

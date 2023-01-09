@@ -1,25 +1,16 @@
 @charset "ISO-8859-1";
 
-#cardHeader {
-	display: flex;
-	justify-content: space-around;
-}
-
-#cardRecap {
-	margin-top: 10%;
-	margin-left: 10px;
-	margin-right: 10px;
-}
-
-#titleCardRecap {
-	margin-top: 5px;
-}
-
 #titleCardRecap {
 	text-align: center;
     margin: 10px;
+    margin-top: 5px;
 }
 
-#cardCommentaire {
-	margin: 10px;
+#btnImpressions {
+	display: flex;
+    justify-content: space-between;
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:100px;
 }

@@ -14,7 +14,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,28 +21,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.a2bsystem.models.Cli;
 import com.a2bsystem.models.Historique;
 
 /**
  * Servlet implementation class Home
  */
-@WebServlet("/RecapImp")
-public class RecapImp extends HttpServlet {
+@WebServlet("/AjoutArticle")
+public class AjoutArticle extends HttpServlet {
 	
-	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
+//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+//		
+//
+//		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
+//        
+//	}
 
-		String Login = (String) session.getAttribute("login");
+	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
 
 		if(session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") {
-		
+			
 			session.setAttribute("articleClient", request.getParameter("articleClient") );
 		}
 		
-//		if(session.getAttribute("articlePrix") == null || session.getAttribute("articlePrix") == "") {
+//if(session.getAttribute("articlePrix") == null || session.getAttribute("articlePrix") == "") {
 //			
 //			session.setAttribute("articlePrix", request.getParameter("articlePrix") );
 //		}
@@ -57,24 +59,29 @@ public class RecapImp extends HttpServlet {
 		session.setAttribute("articleCommentaire2", request.getParameter("articleCommentaire2") );
 		session.setAttribute("articleOrigine", request.getParameter("articleOrigine") );
 		
-		System.out.println("artCli RecapImp " + session.getAttribute("articleClient"));
+		
+		
 		String clientString = (String) session.getAttribute("articleClient");
 		String cleanClient  = clientString.replace("'", " ");
 		String valArticle = "";
-		String articlePrix = (String) session.getAttribute("articlePrix");
-		
+		//String articlePrix = (String) session.getAttribute("articlePrix");
+
+		System.out.println("artCli ajoutArt " + session.getAttribute("articleClient"));
+
 		 if(session.getAttribute("inputSaisieArticle") == null) { 
 			  valArticle = (String) session.getAttribute("valArticle");
 		 	} else {
 			  valArticle = (String) session.getAttribute("inputSaisieArticle");
 		 } 
 		 
-		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
+	 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
 			 session.setAttribute("articlePrix", 0);
 		 }
 		
+		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		//var foretagKod = session.getAttribute("foretagKod");
-		//request.setAttribute("prev_page", "client");
+		String Login = (String) session.getAttribute("login");
+		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article @ForetagKod=1000" +
 																		 ", @Perssign='" + Login +
@@ -95,47 +102,51 @@ public class RecapImp extends HttpServlet {
             e.printStackTrace();
         } 
         
-		 try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-	        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande 1000,'" + Login + "';";
-	        	
-	        	System.out.println(SQL);
-	        	ResultSet rs = stmt.executeQuery(SQL);
-	            List<Historique> historiques = new ArrayList<Historique>();
-	        	if(rs.next()) {
-	        		Historique historique = new Historique();
-	        		historique.client = rs.getString("FtgNr");
-	        		historique.quantite = rs.getString("Quantite");
-	        		historique.unite = rs.getString("Unite");
-	        		historique.categorie = rs.getString("Categorie");
-	        		historique.article = rs.getString("Article");
-	        		historique.origine = rs.getString("Origine");
-	        		historique.commentaire = rs.getString("Commentaire");
-	        		historique.prix = rs.getString("Prix");
-	        		historique.date = rs.getString("Date");
-	
-	        		historiques.add(historique);
-	    		
-	            	while(rs.next()) {
-	            		Historique historique2 = new Historique();
-	            		historique2.client = rs.getString("FtgNr");
-	            		historique2.quantite = rs.getString("Quantite");
-	            		historique2.unite = rs.getString("Unite");
-	            		historique2.categorie = rs.getString("Categorie");
-	            		historique2.article = rs.getString("Article");
-	            		historique2.origine = rs.getString("Origine");
-	            		historique2.commentaire = rs.getString("Commentaire");
-	            		historique2.prix = rs.getString("Prix");
-	            		historique2.date = rs.getString("Date");
-	            		historiques.add(historique2);
-	            	}
-	                    
-	            	request.setAttribute( "historiques", historiques );
-	            	
-	            }
-	        }
-	        catch (Exception e) {
-	            e.printStackTrace();
-	        } 
-		this.getServletContext().getRequestDispatcher( "/WEB-INF/recapImp.jsp" ).forward( request, response );
+//		request.setAttribute("prev_page", "client");
+//        try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
+//        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande 1000,'" + Login + "';";
+//        	
+//        	System.out.println(SQL);
+//        	ResultSet rs = stmt.executeQuery(SQL);
+//            List<Historique> historiques = new ArrayList<Historique>();
+//        	if(rs.next()) {
+//        		Historique historique = new Historique();
+//        		historique.client = rs.getString("FtgNr");
+//        		historique.quantite = rs.getString("Quantite");
+//        		historique.unite = rs.getString("Unite");
+//        		historique.categorie = rs.getString("Categorie");
+//        		historique.article = rs.getString("Article");
+//        		historique.origine = rs.getString("Origine");
+//        		historique.commentaire = rs.getString("Commentaire");
+//        		historique.prix = rs.getString("Prix");
+//        		historique.date = rs.getString("Date");
+//
+//        		historiques.add(historique);
+//    		
+//            	while(rs.next()) {
+//            		Historique historique2 = new Historique();
+//            		historique2.client = rs.getString("FtgNr");
+//            		historique2.quantite = rs.getString("Quantite");
+//            		historique2.unite = rs.getString("Unite");
+//            		historique2.categorie = rs.getString("Categorie");
+//            		historique2.article = rs.getString("Article");
+//            		historique2.origine = rs.getString("Origine");
+//            		historique2.commentaire = rs.getString("Commentaire");
+//            		historique2.prix = rs.getString("Prix");
+//            		historique2.date = rs.getString("Date");
+//            		historiques.add(historique2);
+//            	}
+//                    
+//            	request.setAttribute( "historiques", historiques );
+//            	
+//            }
+//        }
+//        catch (Exception e) {
+//            e.printStackTrace();
+//        } 
+//		
+		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeCategory.jsp" ).forward( request, response );
+            
 	}
+
 }

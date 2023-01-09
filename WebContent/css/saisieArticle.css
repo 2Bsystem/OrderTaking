@@ -8,6 +8,19 @@
 	margin-bottom:10px;
 }
 
+#btnSaisieArticle {
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:150px;
+}
+
+#topSaisieArticle{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
 #btnValiderCommande {
 	position: fixed;
 	width:100%;
@@ -15,8 +28,7 @@
 	margin-bottom:100px;
 }
 
-#topSaisieArticle{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 10px;
+#textareaForm {
+	
+	min-height: 5em;
 }
