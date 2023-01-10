@@ -17,7 +17,9 @@
  -->			<!-- 	 <form method="post" action="Home">
 			  		<input type="submit" class="btn btn-light" value="Accueil" >
 				</form>   -->
-				
+				<form>
+			  		<input type="button" class="btn btn-light" value="Retour" onclick="history.back()">
+				</form>
 			</div>
 
 	</div>

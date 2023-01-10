@@ -6,6 +6,8 @@
 		<div id ="formSelectArticle">
 			<form id="formInput" method="post" action="SaisieArticle">
 				<input id="inputSaisieArt" type="text" class="form-control" name="inputSaisieArticle" placeholder="Saisie Libre" aria-label="Username" aria-describedby="basic-addon1">
+				<input class="btn btn-outline-secondary" type="submit" value="Ok">
+				
 			</form>
 			<form method="post" action="SaisieArticle">
 				<div id="listArticle" class="btn-group-vertical">
@@ -14,13 +16,13 @@
 		  	</form>
 	  	</div>
   	<script>
-  	
+/*   	
   	$(document).ready(function(){
   	   $('#inputSaisieArt').live('blur',function(){
   	      $('#formInput').submit();
   	   });
   	});
-  	
+  	 */
   		listeBoeuf = [
   			"Foie n1",
   			"Coeur",
@@ -108,15 +110,7 @@
   		function printLiBoeuf() {
   			
   			for( var i = 0; i < listeBoeuf.length; i++){
-  	  	 	  /* 	var li = document.createElement("li");
-  	  			li.classList.add("list-group-item");
-  	  			
-  	  			var t = document.createTextNode(listeBoeuf[i]);
-  	  			li.appendChild(t);
-  	  			document.getElementById("listArticle").appendChild(li)
-  	  			li.setAttribute("onclick", "formSelectArticle.submit()");
-  	  			li.innerHTML = listeBoeuf[i]; */
-  	  			
+		
   				var btn = document.createElement("button");
   				btn.classList.add("btn");
   				btn.classList.add("btn-outline-secondary");
@@ -134,16 +128,7 @@
 		function printLiVeau() {
 		  			
   			for( var i = 0; i < listeVeau.length; i++){
-  	  			
-  	  		/* 	var li = document.createElement("li");
-  	  			li.classList.add("list-group-item");
-  	  			
-  	  			var t = document.createTextNode(listeVeau[i]);
-  	  			li.appendChild(t);
-  	  			document.getElementById("listArticle").appendChild(li)
-  	  			li.setAttribute("onclick", "formSelectArticle.submit()");
-  	  			li.innerHTML = listeVeau[i]; */
-  	  			
+
   				var btn = document.createElement("button");
   				btn.classList.add("btn");
   				btn.classList.add("btn-outline-secondary");
@@ -160,16 +145,7 @@
 		function printLiPorc() {
 				
 			for( var i = 0; i < listePorc.length; i++){
-				
-				/* var li = document.createElement("li");
-				li.classList.add("list-group-item");
-				
-				var t = document.createTextNode(listePorc[i]);
-				li.appendChild(t);
-				document.getElementById("listArticle").appendChild(li)
-				li.setAttribute("onclick", "formSelectArticle.submit()");
-				li.innerHTML = listePorc[i]; */
-				
+
   				var btn = document.createElement("button");
   				btn.classList.add("btn");
   				btn.classList.add("btn-outline-secondary");
@@ -186,16 +162,6 @@
 		function printLiAgneau() {
 				
 			for( var i = 0; i < listeAgneau.length; i++){
-				
-			/* 	var li = document.createElement("li");
-				li.classList.add("list-group-item");
-				
-				var t = document.createTextNode(listeAgneau[i]);
-				li.appendChild(t);
-				document.getElementById("listArticle").appendChild(li)
-				li.setAttribute("onclick", "formSelectArticle.submit()");
-				li.innerHTML = listeAgneau[i];
-  	  			li.value = listeAgneau[i]; */
   	  			
   				var btn = document.createElement("button");
   				btn.classList.add("btn");

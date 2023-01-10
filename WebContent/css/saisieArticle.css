@@ -29,6 +29,10 @@
 }
 
 #textareaForm {
-	
 	min-height: 5em;
+}
+
+.field {
+	display:flex;
+	justify-content: space-between;
 }

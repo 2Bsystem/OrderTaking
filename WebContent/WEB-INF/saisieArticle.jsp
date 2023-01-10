@@ -90,7 +90,7 @@
 		<div class="control">
 			<input class="input" type="number" placeholder="Prix" name="articlePrix">
 		</div>
-		<div class="field">
+		<div >
 		  <div class="control">
 		    <textarea id="textareaForm" class="textarea" placeholder="Commentaire" name="articleCommentaire2"></textarea>
 		  </div>

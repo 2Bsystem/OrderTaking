@@ -24,4 +24,9 @@
 	margin: 5px;
 	width: 85%;
 }
+
+#formInput {
+	display:flex;
+	width: 86%;
+}
  

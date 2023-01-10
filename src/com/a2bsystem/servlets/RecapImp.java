@@ -72,9 +72,7 @@ public class RecapImp extends HttpServlet {
 		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
 			 session.setAttribute("articlePrix", 0);
 		 }
-		
-		//var foretagKod = session.getAttribute("foretagKod");
-		//request.setAttribute("prev_page", "client");
+	
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article @ForetagKod=1000" +
 																		 ", @Perssign='" + Login +
