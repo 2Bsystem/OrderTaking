@@ -9,8 +9,11 @@
 			  <thead>
 			    <tr>
 			      <th scope="col">Client</th>
+			      <th scope="col">Categorie</th>
 			      <th scope="col">Article</th>
 			      <th scope="col">Quantite</th>
+			      <th scope="col">Unite</th>
+			      
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -20,8 +23,11 @@
 		        %>
 			    <tr>
 					  <td><%= histo.client %></td>
+					  <td><%= histo.categorie %></td>
 				      <td><%= histo.article %></td>
 				      <td><%= histo.quantite %></td>
+				      <td><%= histo.unite %></td>
+
 			    </tr>
 			       <% } 
 			  }
