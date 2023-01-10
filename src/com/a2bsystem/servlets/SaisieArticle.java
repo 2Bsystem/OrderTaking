@@ -31,14 +31,14 @@ import com.a2bsystem.models.Cli;
 public class SaisieArticle extends HttpServlet {
 	
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
 		HttpSession session = request.getSession();
+
+		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
 		//var foretagKod = session.getAttribute("foretagKod");
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_order_taking_get_client 1000,'" + Login + "';";
+        	String SQL = "EXEC q_2bp_java_web_order_taking_get_client " + session.getAttribute("foretagKod") + ",'" + Login + "';";
         	
         	System.out.println(SQL);
         	ResultSet rs = stmt.executeQuery(SQL);
@@ -71,11 +71,9 @@ public class SaisieArticle extends HttpServlet {
 		session.setAttribute("valArticle", request.getParameter("valArticle") );
 		session.setAttribute("inputSaisieArticle", request.getParameter("inputSaisieArticle") );
 		
-
 		System.out.println(session.getAttribute("valArticle"));
 		System.out.println(session.getAttribute("inputSaisieArticle"));
 		System.out.println(session.getAttribute("articleClient"));
-
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}

@@ -35,7 +35,7 @@ public class ConfCommande extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
+		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
 
 		String Login = (String) session.getAttribute("login");
 
@@ -65,9 +65,9 @@ public class ConfCommande extends HttpServlet {
     	
     	if(session.getAttribute("impression1") == null || session.getAttribute("impression1") == "" ) {
     		
-    		impressionString = (String) session.getAttribute("impression2");
+    		impressionString = (String) session.getAttribute("Imprimante2");
     	} else {
-    		impressionString = (String) session.getAttribute("impression1");
+    		impressionString = (String) session.getAttribute("Imprimante1");
 
     	}
 
@@ -76,7 +76,7 @@ public class ConfCommande extends HttpServlet {
 		String cleanClient  = clientString.replace("'", " ");
 		
 		  try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-	        	String SQL = "EXEC q_2bp_java_web_order_taking_confirmation @ForetagKod=1000" +
+	        	String SQL = "EXEC q_2bp_java_web_order_taking_confirmation @ForetagKod=" + session.getAttribute("foretagKod") +
 																			 ", @Perssign='" + Login +
 																			 "',@FtgNr='" + cleanClient + 
         																	 "',@Printer='" + impressionString + "';";
@@ -88,7 +88,7 @@ public class ConfCommande extends HttpServlet {
 	        } 
 		
 		 try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-	        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_client 1000,'" + Login + "';";
+	        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_client "+ session.getAttribute("foretagKod") +",'" + Login + "';";
 	        	System.out.println(SQL);
 	        	ResultSet rs = stmt.executeQuery(SQL);
 	            List<histoClient> histoClients = new ArrayList<histoClient>();

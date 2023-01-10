@@ -22,20 +22,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   
 	<body >
-		    <section class="hero is-very-small" style="background-color: #72787e;">
-			  <!--  <div class="level">
-			   		<div class="level-left">
-			      		<h1 class="title is-5 has-text-white">
-			        		2B ORDER TAKING
-			      		</h1>
-		      		</div>
-		      		<div class="level-right">
-			      		<figure class="image container logo-footer image" style="height: 130px; width: 210px;">
-				 	    	<img src="inc/logoSOA.png">
-				    	</figure>
-			    	</div>
-		      	</div> -->
-		      	
+<!-- 		    <section class="hero is-very-small" style="background-color: #72787e;">
 		      	 <div id="containerHeader">
 			   		<div id="titleHeader">
 			      		<h1 class="title is-5 has-text-white">
@@ -48,5 +35,12 @@
 				    	</figure>
 			    	</div>
 		      	</div>
-			</section>
+			</section> -->
+			
+	<nav id="nav" class="navbar sticky-top navbar-light bg-light">
+	  <span id="headerNav" class="navbar-brand" >
+	    <img src="inc/logoSOA.png" class="d-inline-block align-top" width="100" height="100" >
+	    2B ORDER TAKING
+	  </span>
+	</nav>
 		

@@ -1,40 +1,18 @@
-.hero-main {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    margin-top: 0px;
-    z-index: 3;
-}  
-.is-very-small {
-	padding: 1rem;
-}
-.title-header {
-	position: absolute;
-	width: 100%;
- 	display: flex;
-  	justify-content: center;
-}
 
-body section.hero.is-very-small {
+/* body nav {
 	position: sticky;
 	top:0;
 	z-index: 5;
 }
-
-#containerHeader{
-	display:flex;
-	justify-content: space-between;
+ */
+#nav {
+	padding-left: 10px;
+    padding-right: 10px;
 }
 
-#titleHeader {
-    margin-top: 7%;
+#headerNav {
+	display: contents;
 }
-
-#imgLogo{
-	height:80px;
-	width: 130px;
-} 
 
 @media screen and (orientation:landscape) {
 
@@ -48,4 +26,3 @@ body section.hero.is-very-small {
 	} 
 	
 }
-

@@ -31,8 +31,8 @@
 	
 		<form method="post" action="ConfCommande">
 			<div id ="btnImpressions">
-		  		<input id="btnValiderImpression" name="impression1" class="button is-size-5 has-text-weight-bold" type="submit" value="Impression 1" style="background-color: #0063af; color:#fff;">
-		  		<input id="btnValiderImpression2" name="impression2" class="button is-size-5 has-text-weight-bold" type="submit" value="Impression 2" style="background-color: #0063af; color:#fff;">
+		  		<input id="btnValiderImpression" name="impression1" class="button is-size-5 has-text-weight-bold" type="submit" value="<%= session.getAttribute("Imprimante1") %>" style="background-color: #0063af; color:#fff;">
+		  		<input id="btnValiderImpression2" name="impression2" class="button is-size-5 has-text-weight-bold" type="submit" value="<%= session.getAttribute("Imprimante2") %>" style="background-color: #0063af; color:#fff;">
 		  	</div>	
 		</form>
 	</div>

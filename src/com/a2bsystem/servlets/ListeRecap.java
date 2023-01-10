@@ -33,11 +33,11 @@ public class ListeRecap extends HttpServlet {
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user=" + "sa" + ";password=" + "2bsystem99";
+		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_client 1000,'" + Login + "';";
+        	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_client " + session.getAttribute("foretagKod") +",'" + Login + "';";
         	System.out.println(SQL);
         	ResultSet rs = stmt.executeQuery(SQL);
             List<histoClient> histoClients = new ArrayList<histoClient>();

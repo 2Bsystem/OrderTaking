@@ -40,12 +40,13 @@ public class Connect extends HttpServlet {
 			String Login = request.getParameter("login");
 			String Password = request.getParameter("password");						
 			session.setAttribute("login", Login);
-			String connectionUrl = "jdbc:sqlserver://192.168.255.100;databaseName=MASTER_V2;user="
+			String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user="
 					+ Login + ";password=" + Password;
-			
 			try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 				request.setAttribute( "ids", "");
 				request.setAttribute("Connect", 1);
+				session.setAttribute("login", Login);
+
 			
 				RequestDispatcher rd = request.getRequestDispatcher("/ListeRecap");
 				rd.forward(request, response);
