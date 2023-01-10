@@ -2,7 +2,7 @@
     <footer id="footer" class="footer-main" style="background-color: #72787e;">
     <div class="level p-1">
 	
-    	<div class="level-item"></div>
+    	<div id="uselessLandscape" class="level-item"></div>
 	    	<div class="level-item">
 	    	<form method="post" action="Connect">
 			  		<input type="submit" class="btn btn-light" value="Deconnexion" >

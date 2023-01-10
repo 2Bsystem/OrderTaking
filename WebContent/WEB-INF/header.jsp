@@ -43,7 +43,7 @@
 			      		</h1>
 		      		</div>
 		      		<div id="logoHeader">
-			      		<figure class="image container logo-footer image" style="height: 80px; width: 130px;">
+			      		<figure id="imgLogo" class="image container logo-footer image">
 				 	    	<img src="inc/logoSOA.png">
 				    	</figure>
 			    	</div>

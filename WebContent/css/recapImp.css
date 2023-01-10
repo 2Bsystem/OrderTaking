@@ -14,3 +14,10 @@
 	bottom:0;
 	margin-bottom:100px;
 }
+
+@media screen and (orientation:landscape) {
+
+	#btnImpressions {
+		margin-bottom:75px;
+	}
+}

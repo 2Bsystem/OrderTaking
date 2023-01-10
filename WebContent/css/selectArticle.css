@@ -29,4 +29,12 @@
 	display:flex;
 	width: 86%;
 }
+
+@media screen and (orientation:landscape) {
+	
+		#formInput {
+		display:flex;
+		width: 92%;
+	}	
+}
  

@@ -2,7 +2,27 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.a2bsystem.models.Cli" %>
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<style>
+/* Permet de bloquer la vue paysage*/
+@media screen and (orientation:landscape) {
+	
+	 html {
+        /* Rotate the content container */
+        transform: rotate(-90deg);
+        transform-origin: left top;
+        /* Set content width to viewport height */
+        width: 100vh;
+        /* Set content height to viewport width */
+        height: 100vw;
+        overflow-x: hidden;
+        position: absolute;
+        top: 100%;
+        left: 0;
+      }
 
+}
+
+</style>
 <div id="topSaisieArticle">
 	<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
 	 <%if(session.getAttribute("inputSaisieArticle") == null) { %>

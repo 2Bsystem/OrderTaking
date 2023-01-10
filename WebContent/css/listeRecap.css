@@ -12,3 +12,14 @@
     margin-bottom: 100px;
     width: 100%;
 }
+
+@media screen and (orientation:landscape) {
+
+	#btnAjoutCommande {
+		position: fixed;
+	    bottom: 0;
+	    margin-bottom: 75px;
+	    width: 100%;
+	}
+	
+}

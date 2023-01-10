@@ -14,3 +14,15 @@
     display: flex;
     margin-bottom: 20px;
 }
+
+@media screen and (orientation:landscape) {
+
+	#section_login {
+		margin-top: 0px;
+	}
+	
+	#imgAccueil {
+		display: none;
+	}
+	
+}
