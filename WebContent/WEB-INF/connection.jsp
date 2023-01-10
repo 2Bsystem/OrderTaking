@@ -7,7 +7,7 @@
 			    <div class="box">     	
 					
 				  <!-- LOGIN -->
-				  <div class="field">
+				  <div >
 				    <label class="label is-size-5 has-text-black">UTILISATEUR</label>
 					<div class="control has-icons-left">
 					  <input class="input is-size-5 " type="text" id="login" name="login" placeholder="Utilisateur" autocomplete="off" required >
@@ -18,7 +18,7 @@
 				  </div>
 							
 				   <!-- MOT DE PASSE -->	
-				   <div class="field">
+				   <div >
 					 <label class="label is-size-5  has-text-black">MOT DE PASSE</label>
 				     <div class="control has-icons-left">
 					   <input class="input is-size-5 " type="password" id="password" name="password" placeholder="Mot de passe" autocomplete="off" required>
