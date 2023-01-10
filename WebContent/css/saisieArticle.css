@@ -36,3 +36,10 @@
 	display:flex;
 	justify-content: space-between;
 }
+
+#formSaisieArticle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 200px;
+}
