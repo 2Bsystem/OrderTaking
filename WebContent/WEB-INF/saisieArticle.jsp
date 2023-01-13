@@ -45,7 +45,7 @@
 						 <%
 					      	for (Cli client : (List<Cli>) request.getAttribute("clients")) {
 					      %>
-							 <option><%= client.nomAppel %></option>
+							 <option><span hidden><%=client.code %></span> <%= client.nomAppel %></option>
 							 
 						 <% } 
 						  %>

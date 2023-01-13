@@ -73,7 +73,11 @@ public class ConfCommande extends HttpServlet {
 
 		
 		String clientString = (String) session.getAttribute("articleClient");
-		String cleanClient  = clientString.replace("'", " ");
+		String cleanClient  = clientString.replaceAll("\\s.*", "");
+		System.out.println("cleanclean " + cleanClient);
+		
+		
+	
 		
 		  try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
 	        	String SQL = "EXEC q_2bp_java_web_order_taking_confirmation @ForetagKod=" + session.getAttribute("foretagKod") +

@@ -57,7 +57,9 @@ public class AjoutArticle extends HttpServlet {
 		
 		
 		String clientString = (String) session.getAttribute("articleClient");
-		String cleanClient  = clientString.replace("'", " ");
+//		String cleanClient  = clientString.replace("'", " ");
+		String cleanClient  = clientString.replaceAll("\\s.*", "");
+
 		String valArticle = "";
 		//String articlePrix = (String) session.getAttribute("articlePrix");
 
