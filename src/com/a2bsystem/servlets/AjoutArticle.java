@@ -1,18 +1,10 @@
 package com.a2bsystem.servlets;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -28,13 +20,6 @@ import com.a2bsystem.models.Historique;
  */
 @WebServlet("/AjoutArticle")
 public class AjoutArticle extends HttpServlet {
-	
-//	public void doGet( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
-//		
-//
-//		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
-//        
-//	}
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
@@ -57,11 +42,17 @@ public class AjoutArticle extends HttpServlet {
 		
 		
 		String clientString = (String) session.getAttribute("articleClient");
-//		String cleanClient  = clientString.replace("'", " ");
-		String cleanClient  = clientString.replaceAll("\\s.*", "");
+		String[] arrayClientString = clientString.split("//");
+		
+		System.out.println("arraClient1 " + arrayClientString[0]);
+		
+		session.setAttribute("codeClient", arrayClientString[0]);
+		session.setAttribute("nomAppelClient", arrayClientString[1]);
+		
+		String codeClient  = (String) session.getAttribute("codeClient");		
+		String nomAppelClient  = (String) session.getAttribute("nomAppelClient");		
 
 		String valArticle = "";
-		//String articlePrix = (String) session.getAttribute("articlePrix");
 
 		System.out.println("artCli ajoutArt " + session.getAttribute("articleClient"));
 
@@ -69,11 +60,11 @@ public class AjoutArticle extends HttpServlet {
 			  valArticle = (String) session.getAttribute("valArticle");
 		 	} else {
 			  valArticle = (String) session.getAttribute("inputSaisieArticle");
-		 } 
-		 
-	 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
-			 session.setAttribute("articlePrix", 0);
 		 }
+		 
+		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
+				 session.setAttribute("articlePrix", 0);
+			 }
 		
 		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
 		String Login = (String) session.getAttribute("login");
@@ -81,7 +72,8 @@ public class AjoutArticle extends HttpServlet {
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article @ForetagKod="+ session.getAttribute("foretagKod")  +
 																		 ", @Perssign='" + Login +
-																		 "',@FtgNr='" + cleanClient +
+																		 "',@FtgNr='" + codeClient +
+																		 "',@NomAppelClient='" + nomAppelClient +
 																		 "',@Quantite=" + session.getAttribute("articleQuantite") +
 																		 ",@Unite='" + session.getAttribute("articleUnite") +
 																		 "',@Categorie='" + session.getAttribute("valCategory") +

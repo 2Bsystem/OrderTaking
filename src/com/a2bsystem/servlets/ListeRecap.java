@@ -1,18 +1,12 @@
 package com.a2bsystem.servlets;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.a2bsystem.models.Cli;
 import com.a2bsystem.models.histoClient;
 
 /**
@@ -44,7 +37,7 @@ public class ListeRecap extends HttpServlet {
         	if(rs.next()) {
         		histoClient histoClient = new histoClient();
         		histoClient.id = rs.getString("Impression");
-        		histoClient.client = rs.getString("FtgNr");
+        		histoClient.client = rs.getString("NomAppelClient");
         		histoClient.totalPrix = rs.getString("Total");
         		histoClient.date = rs.getString("DateValidation");
 
@@ -53,20 +46,20 @@ public class ListeRecap extends HttpServlet {
             	while(rs.next()) {
             		histoClient histoClient2 = new histoClient();
             		histoClient2.id = rs.getString("Impression");
-            		histoClient2.client = rs.getString("FtgNr");
+            		histoClient2.client = rs.getString("NomAppelClient");
             		histoClient2.totalPrix = rs.getString("Total");
             		histoClient2.date = rs.getString("DateValidation");
 
             		histoClients.add(histoClient2);
             	}
-                    
             	request.setAttribute( "histoClients", histoClients );
-            	
             }
         }
         catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
+        
+        session.setAttribute("nomAppelClientModifCommande", null);
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
 	}
 }

@@ -59,11 +59,15 @@ public class RecapImp extends HttpServlet {
 		
 		System.out.println("artCli RecapImp " + session.getAttribute("articleClient"));
 		String clientString = (String) session.getAttribute("articleClient");
-		//String cleanClient  = clientString.replace("'", " ");
-		String cleanClient  = clientString.replaceAll("\\s.*", "");
+		String[] arrayClientString = clientString.split("//");
+		
+		session.setAttribute("codeClient", arrayClientString[0]);
+		session.setAttribute("nomAppelClient", arrayClientString[1]);
+		
+		String codeClient  = (String) session.getAttribute("codeClient");		
+		String nomAppelClient  = (String) session.getAttribute("nomAppelClient");		
 
 		String valArticle = "";
-		String articlePrix = (String) session.getAttribute("articlePrix");
 		
 		 if(session.getAttribute("inputSaisieArticle") == null) { 
 			  valArticle = (String) session.getAttribute("valArticle");
@@ -78,7 +82,8 @@ public class RecapImp extends HttpServlet {
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article @ForetagKod=" + session.getAttribute("foretagKod") +
 																		 ", @Perssign='" + Login +
-																		 "',@FtgNr='" + cleanClient +
+																		 "',@FtgNr='" + codeClient +
+																		 "',@NomAppelClient='" + nomAppelClient +
 																		 "',@Quantite=" + session.getAttribute("articleQuantite") +
 																		 ",@Unite='" + session.getAttribute("articleUnite") +
 																		 "',@Categorie='" + session.getAttribute("valCategory") +
@@ -103,7 +108,7 @@ public class RecapImp extends HttpServlet {
 	            List<Historique> historiques = new ArrayList<Historique>();
 	        	if(rs.next()) {
 	        		Historique historique = new Historique();
-	        		historique.client = rs.getString("FtgNr");
+	        		historique.client = rs.getString("NomAppelClient");
 	        		historique.quantite = rs.getString("Quantite");
 	        		historique.unite = rs.getString("Unite");
 	        		historique.categorie = rs.getString("Categorie");
@@ -117,7 +122,7 @@ public class RecapImp extends HttpServlet {
 	    		
 	            	while(rs.next()) {
 	            		Historique historique2 = new Historique();
-	            		historique2.client = rs.getString("FtgNr");
+	            		historique2.client = rs.getString("NomAppelClient");
 	            		historique2.quantite = rs.getString("Quantite");
 	            		historique2.unite = rs.getString("Unite");
 	            		historique2.categorie = rs.getString("Categorie");

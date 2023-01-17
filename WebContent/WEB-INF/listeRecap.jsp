@@ -2,35 +2,47 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.a2bsystem.models.histoClient" %>
 	<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-	<form method="post" action="ListeCategory">
+	
 		<div id="bodyListeRecap">
-			<table class="table">
-			  <thead>
-			    <tr>
-			      <th scope="col">Client</th>
-			      <th scope="col">Total</th>
-			      <th scope="col">Date</th>
-			    </tr>
-			  </thead>
-			   <tbody>
-			  <%
-			  if(request.getAttribute("histoClients") != null){
-		      		for (histoClient histo : (List<histoClient>) request.getAttribute("histoClients")) {
-		        %>
-			    <tr>
-				      <td><%= histo.client %></td>
-				      <td><%= histo.totalPrix %></td>
-				      <td><%= histo.date %></td>
-			    </tr>
-			       <% }
-			  }
-				%>
-			  </tbody> 
-			</table>
+			<form id="detailCmd" method="post" action="detailCommande">
+				<!-- <table class="table">
+				  <thead>
+				    <tr>
+				      <th scope="col">Client</th>
+				      <th scope="col">Total</th>
+				      <th scope="col">Date</th>
+				    </tr>
+				  </thead>
+				   <tbody> -->
+				   <div class="btn-group-vertical">
+				  <%
+				  if(request.getAttribute("histoClients") != null){
+			      		for (histoClient histo : (List<histoClient>) request.getAttribute("histoClients")) {
+			        %>
 
+					  <button type="submit" class="btn btn-outline-secondary btn-lg" name="idCmd" value="<%= histo.id %>//<%= histo.client %>" ><%= histo.client %> <%= histo.totalPrix %> <%= histo.date %></button>
+				       <% }
+				  }
+					%>
+					</div>
+				<!--   </tbody> 
+				</table> -->
+			</form>
+	<form method="post" action="ListeCategory">
 	   <input id="btnAjoutCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Commande" style="background-color: #0063af; color:#fff;">
-	   </div>
    </form>
+	   </div>
+   <script>
+/*    var formDetailCmd = document.getElementById("detailCmd");
+
+   function myFunction(x) {
+	    //alert("Row index is: " + x.rowIndex);
+	    formDetailCmd.submit();
+	    
+	    
+	} */
+
+   </script>
    
     <!-- FOOTER -->
   

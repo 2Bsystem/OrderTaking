@@ -16,13 +16,7 @@
 		  	</form>
 	  	</div>
   	<script>
-/*   	
-  	$(document).ready(function(){
-  	   $('#inputSaisieArt').live('blur',function(){
-  	      $('#formInput').submit();
-  	   });
-  	});
-  	 */
+
   		listeBoeuf = [
   			"Foie n1",
   			"Coeur",

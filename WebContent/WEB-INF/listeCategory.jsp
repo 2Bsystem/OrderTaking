@@ -21,18 +21,11 @@
   				var t = document.createTextNode(category[i]);
   				btn.appendChild(t);
   				document.getElementById("listeCategory").appendChild(btn);
-  				
-/*   				btn.addEventListener("click", handleClick);
- */  				btn.value = category[i];
+ 				btn.value = category[i];
   				
   			} 
   		}
   		
-  		/* function handleClick(event) {
-  			console.log(event.target.value);
-  			
-  		} */
-  	
   		printBtn();
   	
   	</script>

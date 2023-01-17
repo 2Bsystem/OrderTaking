@@ -34,8 +34,13 @@
 <div id="formSaisieArticle">		
 	<form id="articleForm" method="post" action="">
 		<div id="bodySaisieArticle">
+		<% if(session.getAttribute("nomAppelClientModifCommande") != null || session.getAttribute("nomAppelClientModifCommande") != "" ) { %>
+				<div class="control">
+					<input class="input" type="text" placeholder="<%= session.getAttribute("nomAppelClientModifCommande") %>" name="articleClient" disabled>
+				</div>
+			<%} else
 		
-		<% if (session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") { %>
+		 if (session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") { %>
 			<div class="field">
 				<div class="control">
 					<div class="select is-danger" >
@@ -45,8 +50,8 @@
 						 <%
 					      	for (Cli client : (List<Cli>) request.getAttribute("clients")) {
 					      %>
-							 <option><span hidden><%=client.code %></span> <%= client.nomAppel %></option>
-							 
+							 <option value="<%=client.code %>//<%= client.nomAppel %>"><%= client.nomAppel %></option>
+							
 						 <% } 
 						  %>
 						 </select>
@@ -56,7 +61,7 @@
 			
 			<% } else { %>
 				<div class="control">
-					<input class="input" type="text" placeholder="<%= session.getAttribute("articleClient") %>" name="articleClient" disabled>
+					<input class="input" type="text" placeholder="<%= session.getAttribute("nomAppelClient") %>" name="articleClient" disabled>
 				</div>
 			<%} %>
 			
@@ -117,9 +122,16 @@
 			</div>
 	
 		</div>
+		<% if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "" ) { %>
 	  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
 	  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
 		
+	</form>
+	<form method="post" action="">
+	<%} else { %>
+	  	<input id="btnRetourDetailCmd" class="button is-size-5 has-text-weight-bold" type="submit" value="Retour Detail Cmd" style="background-color: #0063af; color:#fff;">
+		
+		<% } %>
 	</form>
 </div>
 <script>

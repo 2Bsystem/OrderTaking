@@ -1,20 +1,13 @@
 package com.a2bsystem.servlets;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Properties;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,7 +27,6 @@ public class SaisieArticle extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
-		//var foretagKod = session.getAttribute("foretagKod");
 		String Login = (String) session.getAttribute("login");
 		request.setAttribute("prev_page", "client");
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
