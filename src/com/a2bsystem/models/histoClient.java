@@ -5,4 +5,5 @@ public class histoClient {
 	public String client;
 	public String totalPrix;
 	public String date;
+	public String codeClient;
 }

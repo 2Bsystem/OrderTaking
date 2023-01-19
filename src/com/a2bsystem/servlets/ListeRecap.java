@@ -40,6 +40,7 @@ public class ListeRecap extends HttpServlet {
         		histoClient.client = rs.getString("NomAppelClient");
         		histoClient.totalPrix = rs.getString("Total");
         		histoClient.date = rs.getString("DateValidation");
+        		histoClient.codeClient = rs.getString("FtgNr");
 
         		histoClients.add(histoClient);
     		
@@ -49,6 +50,7 @@ public class ListeRecap extends HttpServlet {
             		histoClient2.client = rs.getString("NomAppelClient");
             		histoClient2.totalPrix = rs.getString("Total");
             		histoClient2.date = rs.getString("DateValidation");
+            		histoClient2.codeClient = rs.getString("FtgNr");
 
             		histoClients.add(histoClient2);
             	}
@@ -59,7 +61,18 @@ public class ListeRecap extends HttpServlet {
             e.printStackTrace();
         }
         
-        session.setAttribute("nomAppelClientModifCommande", null);
+         session.setAttribute("nomAppelClientModifCommande", null);
+        
+         session.setAttribute("recapClient", null);
+	     session.setAttribute("recapQuantite", null);
+	     session.setAttribute("recapUnite", null);
+	     session.setAttribute("recapCategorie", null);
+	     session.setAttribute("recapArticle", null);
+	     session.setAttribute("recapOrigine", null);
+	     session.setAttribute("recapCommentaire", null);
+	     session.setAttribute("recapCommentaire2", null);
+	     session.setAttribute("recapPrix", null);
+        
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/listeRecap.jsp" ).forward( request, response );
 	}
 }

@@ -24,23 +24,52 @@
 
 </style>
 <div id="topSaisieArticle">
-	<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
-	 <%if(session.getAttribute("inputSaisieArticle") == null) { %>
-		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
-	<%} else {%>
-		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
-	<% } %>	
+
+	
+    <% if(session.getAttribute("recapCategorie") == null) { %>
+		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
+	<%} else if(session.getAttribute("valCategory") == null){ %>
+		<form method="post" action="ListeCategory">
+			<button class="btn btn-outline-info btn-lg" type="submit"><%= session.getAttribute("recapCategorie") %> </button>
+		</form>
+	<%} else { %>
+	
+		<form method="post" action="ListeCategory">
+			<button class="btn btn-outline-info btn-lg" type="submit"><%= session.getAttribute("valCategory") %> </button>
+		</form>
+	<% }%>
+		
+	<%if(session.getAttribute("recapArticle") == null) {%>	
+		<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
+		<%} else {%>
+			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+		<%}
+
+	 }else if (session.getAttribute("valArticle") == null ) {%>
+	 	<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+	 		
+ 			<h1 id="articleModif" ><%= session.getAttribute("recapArticle") %> </h1>	
+		 <% } else { %>
+			<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+			
+		<%} %>
+			 
+	<%} else { %>
+		<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+			<h1 id="articleModif" ><%= session.getAttribute("valArticle") %> </h1>	
+		<% } else { %>
+			<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+			
+		<%} %>
+		
+	<%} %>
 </div>
 <div id="formSaisieArticle">		
 	<form id="articleForm" method="post" action="">
 		<div id="bodySaisieArticle">
-		<% if(session.getAttribute("nomAppelClientModifCommande") != null || session.getAttribute("nomAppelClientModifCommande") != "" ) { %>
-				<div class="control">
-					<input class="input" type="text" placeholder="<%= session.getAttribute("nomAppelClientModifCommande") %>" name="articleClient" disabled>
-				</div>
-			<%} else
-		
-		 if (session.getAttribute("articleClient") == null || session.getAttribute("articleClient") == "") { %>
+			
+	<% if (session.getAttribute("articleClient") == null && session.getAttribute("nomAppelClientModifCommande") == null) { %>
 			<div class="field">
 				<div class="control">
 					<div class="select is-danger" >
@@ -59,23 +88,43 @@
 				 </div>
 			</div>
 			
-			<% } else { %>
+			<% } else if (session.getAttribute("articleClient") != null){ %>
 				<div class="control">
 					<input class="input" type="text" placeholder="<%= session.getAttribute("nomAppelClient") %>" name="articleClient" disabled>
 				</div>
-			<%} %>
+			<%} else { %>
+				<div class="control">
+					<input class="input" type="text" placeholder="<%= session.getAttribute("nomAppelClientModifCommande") %>" name="articleClient" disabled>
+				</div>
+			<% } %>
 			
 			<div class="control">
 				<input class="input" type="number" placeholder="N° Lot" name="articleLot">
 			</div>
-			<div class="control">
-				<input class="input is-danger" type="number" placeholder="Quantité" name="articleQuantite" required>
-			</div>
+			
+			<% 			
+			if(session.getAttribute("recapQuantite") == null ) { %>
+			
+				<div class="control">
+					<input class="input is-danger" type="number" placeholder="Quantité" name="articleQuantite" required>
+				</div>
+			
+			<% } else { %>
+				
+				<div class="control">
+					<input class="input is-danger" type="number" value="<%= session.getAttribute("recapQuantite").toString().trim() %>" placeholder="Quantité" name="articleQuantite" required>
+				</div>
+				
+			<% } %>
+				
 			<div class="field">
 				<label class="label">Unité</label>
 				<div class="control">
 					<div class="select" >
 						<select name="articleUnite">
+						<% if (session.getAttribute("recapUnite") != null) { %>
+							<option selected> <%= session.getAttribute("recapUnite") %></option>
+						<%} %>
 							<option>Pièce</option>
 							<option>Kg</option>
 							<option>Cartons</option>
@@ -88,6 +137,9 @@
 				<div class="control">
 					<div class="select" >
 						<select name="articleCommentaire">
+						<% if (session.getAttribute("recapCommentaire") != null) { %>
+							<option selected> <%= session.getAttribute("recapCommentaire") %></option>
+						<%} %>
 							<option>Frais</option>
 							<option>SV</option>
 							<option>Resserre</option>
@@ -103,6 +155,9 @@
 				<div class="control">
 					<div class="select" >
 						<select name="articleOrigine">
+						<% if (session.getAttribute("recapOrigine") != null) { %>
+							<option selected> <%= session.getAttribute("recapOrigine") %></option>
+						<%} %>
 							<option>FR</option>
 							<option>UE</option>
 						</select>
@@ -112,45 +167,66 @@
 			<div class="control">
 				<input class="input" type="number" placeholder="Poids" name="articlePoids">
 			</div>
-			<div class="control">
-				<input class="input" type="number" placeholder="Prix" name="articlePrix">
-			</div>
-			<div >
+			<%if(session.getAttribute("recapPrix") == null ) { %>
+				<div class="control">
+					<input class="input" type="number" placeholder="Prix" name="articlePrix">
+				</div>
+				
+			<% } else { %>
+				
+				<div class="control">
+					<input class="input" type="number" value="<%= session.getAttribute("recapPrix").toString().trim() %>" placeholder="Prix" name="articlePrix">
+				</div>
+				
+			<% } %>
+			
+			
+			<%if(session.getAttribute("recapCommentaire2") == null ) { %>
 			  <div class="control">
 			    <textarea id="textareaForm" class="textarea" placeholder="Commentaire" name="articleCommentaire2"></textarea>
 			  </div>
-			</div>
+			<% } else { %>
+			  <div class="control">
+			    <textarea id="textareaForm" class="textarea" value="<%= session.getAttribute("recapCommentaire2").toString().trim() %>" placeholder="Commentaire" name="articleCommentaire2"></textarea>
+			  </div>
+			<% } %>
 	
 		</div>
 		<% if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "" ) { %>
-	  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
-	  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
-		
-	</form>
-	<form method="post" action="">
-	<%} else { %>
-	  	<input id="btnRetourDetailCmd" class="button is-size-5 has-text-weight-bold" type="submit" value="Retour Detail Cmd" style="background-color: #0063af; color:#fff;">
-		
+		  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
+		  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
+	  	
+	  	<%} else { %>
+	  		<input id="btnRetourDetailCmd" class="button is-size-5 has-text-weight-bold" type="submit" value="Retour Detail Cmd" style="background-color: #0063af; color:#fff;">
+	  	
 		<% } %>
 	</form>
+
 </div>
 <script>
 	let selectClient = document.getElementById('selectClient');
 	let btnSaisieArticle = document.getElementById('btnSaisieArticle');
 	let btnValiderCommande = document.getElementById('btnValiderCommande');
 	let formSaisie = document.getElementById('articleForm');
+	let btnRetourDetailCmd = document.getElementById('btnRetourDetailCmd');
+
+	if( btnSaisieArticle !== null) {
+		btnSaisieArticle.onclick = function() {
+			//selectClient.setAttribute("disabled", false); 
+			formSaisie.action = 'AjoutArticle';   
+		} 
+		
+		btnValiderCommande.onclick = function() {
+			formSaisie.action = 'RecapImp';
+		}
+		
+	}
+	  
 	
-	
-	 btnSaisieArticle.onclick = function() {
-		//selectClient.setAttribute("disabled", false); 
-		formSaisie.action = 'AjoutArticle';
-	    
+	btnRetourDetailCmd.onclick = function() {
+		formSaisie.action = 'AjoutArticleModif';   
 	} 
-	
-	btnValiderCommande.onclick = function() {
-		formSaisie.action = 'RecapImp';
-	    
-	} 
+
 
 </script>
 

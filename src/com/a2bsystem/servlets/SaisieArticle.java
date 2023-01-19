@@ -64,8 +64,13 @@ public class SaisieArticle extends HttpServlet {
 		session.setAttribute("inputSaisieArticle", request.getParameter("inputSaisieArticle") );
 		
 		System.out.println(session.getAttribute("valArticle"));
-		System.out.println(session.getAttribute("inputSaisieArticle"));
+		System.out.println("inputArticle prout " + session.getAttribute("inputSaisieArticle"));
 		System.out.println(session.getAttribute("articleClient"));
+		System.out.println("ValCat prout " +session.getAttribute("valCategory"));
+		//System.out.println("recapCat prout " +(session.getAttribute("recapCategorie").toString().trim()));
+		System.out.println("ValArticle prout " +session.getAttribute("valArticle"));
+		//System.out.println("recapArticle prout " +(session.getAttribute("recapArticle").toString().trim()));
+		
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}

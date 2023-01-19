@@ -39,6 +39,7 @@ public class detailCommande extends HttpServlet {
 
 		 session.setAttribute("idClientCommande", arrayClientNoIdString[0]);
 	     session.setAttribute("nomAppelClientModifCommande", arrayClientNoIdString[1]);
+	     session.setAttribute("codeClientModifCommande", arrayClientNoIdString[2]);
 		
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande_modif " + session.getAttribute("foretagKod") +",'" 
@@ -56,6 +57,7 @@ public class detailCommande extends HttpServlet {
         		historique.article = rs.getString("Article");
         		historique.origine = rs.getString("Origine");
         		historique.commentaire = rs.getString("Commentaire");
+        		historique.commentaire2 = rs.getString("Commentaire2");
         		historique.prix = rs.getString("Prix");
         		historique.date = rs.getString("Date");
 
@@ -70,6 +72,7 @@ public class detailCommande extends HttpServlet {
             		historique2.article = rs.getString("Article");
             		historique2.origine = rs.getString("Origine");
             		historique2.commentaire = rs.getString("Commentaire");
+            		historique2.commentaire2 = rs.getString("Commentaire2");
             		historique2.prix = rs.getString("Prix");
             		historique2.date = rs.getString("Date");
             		historiques.add(historique2);
@@ -82,7 +85,19 @@ public class detailCommande extends HttpServlet {
         catch (Exception e) {
             e.printStackTrace();
         } 
-
+        
+        /*
+         session.setAttribute("recapClient", null);
+	     session.setAttribute("recapQuantite", null);
+	     session.setAttribute("recapUnite", null);
+	     session.setAttribute("recapCategorie", null);
+	     session.setAttribute("recapArticle", null);
+	     session.setAttribute("recapOrigine", null);
+	     session.setAttribute("recapCommentaire", null);
+	     session.setAttribute("recapPrix", null);
+       */
+        
+        
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailCmd.jsp" ).forward( request, response );
             
 	}

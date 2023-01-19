@@ -8,6 +8,7 @@ public class Historique {
 	public String article;
 	public String origine;
 	public String commentaire;
+	public String commentaire2;
 	public String prix;
 	public String date;
 }

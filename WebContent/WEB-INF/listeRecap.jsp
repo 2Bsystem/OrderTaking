@@ -5,28 +5,35 @@
 	
 		<div id="bodyListeRecap">
 			<form id="detailCmd" method="post" action="detailCommande">
-				<!-- <table class="table">
+				 <table class="table">
 				  <thead>
 				    <tr>
 				      <th scope="col">Client</th>
 				      <th scope="col">Total</th>
 				      <th scope="col">Date</th>
+				      <th scope="col">Modif</th>
+				      
 				    </tr>
 				  </thead>
-				   <tbody> -->
+				   <tbody> 
 				   <div class="btn-group-vertical">
 				  <%
 				  if(request.getAttribute("histoClients") != null){
 			      		for (histoClient histo : (List<histoClient>) request.getAttribute("histoClients")) {
 			        %>
+			        <tr>
+			         <td> <%= histo.client %>  </td>
+			         <td> <%= histo.totalPrix %> </td>
+			         <td> <%= histo.date %>  </td>
 
-					  <button type="submit" class="btn btn-outline-secondary btn-lg" name="idCmd" value="<%= histo.id %>//<%= histo.client %>" ><%= histo.client %> <%= histo.totalPrix %> <%= histo.date %></button>
+					 <td> <button type="submit" class="btn btn-outline-secondary btn-lg" name="idCmd" value="<%= histo.id %>//<%= histo.client %>//<%= histo.codeClient %>" >  </button> </td>
+				       </tr>
 				       <% }
 				  }
 					%>
 					</div>
-				<!--   </tbody> 
-				</table> -->
+				  </tbody> 
+				</table> 
 			</form>
 	<form method="post" action="ListeCategory">
 	   <input id="btnAjoutCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Commande" style="background-color: #0063af; color:#fff;">
