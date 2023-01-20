@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="css/selectArticle.css">
     <link rel="stylesheet" href="css/saisieArticle.css">
     <link rel="stylesheet" href="css/recapImp.css">
+    <link rel="stylesheet" href="css/detailCmd.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="icon" type="image/png" href="inc/favicon.ico" />
     
@@ -22,21 +23,7 @@
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
   
 	<body >
-<!-- 		    <section class="hero is-very-small" style="background-color: #72787e;">
-		      	 <div id="containerHeader">
-			   		<div id="titleHeader">
-			      		<h1 class="title is-5 has-text-white">
-			        		2B ORDER TAKING
-			      		</h1>
-		      		</div>
-		      		<div id="logoHeader">
-			      		<figure id="imgLogo" class="image container logo-footer image">
-				 	    	<img src="inc/logoSOA.png">
-				    	</figure>
-			    	</div>
-		      	</div>
-			</section> -->
-			
+
 	<nav id="nav" class="navbar sticky-top navbar-light bg-light">
 	  <span id="headerNav" class="navbar-brand" >
 	    <img src="inc/logoSOA.png" class="d-inline-block align-top" width="100" height="100" >

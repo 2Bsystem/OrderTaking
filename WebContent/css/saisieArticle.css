@@ -28,6 +28,20 @@
 	margin-bottom:95px;
 }
 
+#btnAjoutArtModif {
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:95px;
+}
+
+#btnModifArt {
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:95px;
+}
+
 #textareaForm {
 	min-height: 5em;
 }
@@ -42,4 +56,19 @@
     flex-direction: column;
     justify-content: center;
     margin-bottom: 130px;
+}
+
+#titleContainer{
+	width:90%;
+}
+
+#titleCategoryArticle {
+	
+	display:flex;
+	justify-content: space-evenly;
+	
+}
+
+#blockCat{
+	display:flex;
 }

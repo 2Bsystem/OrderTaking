@@ -1,12 +1,6 @@
 @charset "ISO-8859-1";
 
-#titleCardRecap {
-	text-align: center;
-    margin: 10px;
-    margin-top: 5px;
-}
-
-#btnImpressions {
+#btnImpressionsDetailCmd {
 	display: flex;
 	flex-direction: column;
     justify-content: space-between;
@@ -16,9 +10,17 @@
 	margin-bottom:100px;
 }
 
+#btnAjoutArticleModif {
+	position: fixed;
+	width:100%;
+	bottom:0;
+	margin-bottom:200px;
+}
+
+
 @media screen and (orientation:landscape) {
 
-	#btnImpressions {
+	#btnImpressionsDetailCmd {
 		margin-bottom:75px;
 	}
 }

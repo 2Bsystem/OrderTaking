@@ -25,45 +25,64 @@
 </style>
 <div id="topSaisieArticle">
 
+	<div id="titleContainer" class="card">
+		<div id="titleCategoryArticle" class="card-body">
 	
-    <% if(session.getAttribute("recapCategorie") == null) { %>
-		<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valCategory") %> </h1>
-	<%} else if(session.getAttribute("valCategory") == null){ %>
-		<form method="post" action="ListeCategory">
-			<button class="btn btn-outline-info btn-lg" type="submit"><%= session.getAttribute("recapCategorie") %> </button>
-		</form>
-	<%} else { %>
-	
-		<form method="post" action="ListeCategory">
-			<button class="btn btn-outline-info btn-lg" type="submit"><%= session.getAttribute("valCategory") %> </button>
-		</form>
-	<% }%>
-		
-	<%if(session.getAttribute("recapArticle") == null) {%>	
-		<%if(session.getAttribute("inputSaisieArticle") == null) { %>
-			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("valArticle") %> </h1>	
-		<%} else {%>
-			<h1 class="btn btn-outline-info btn-lg"><%= session.getAttribute("inputSaisieArticle") %> </h1>	
-		<%}
-
-	 }else if (session.getAttribute("valArticle") == null ) {%>
-	 	<%if(session.getAttribute("inputSaisieArticle") == null) { %>
-	 		
- 			<h1 id="articleModif" ><%= session.getAttribute("recapArticle") %> </h1>	
-		 <% } else { %>
-			<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+		    <% if(session.getAttribute("recapCategorie") == null) { %>
+				<h1 ><%= session.getAttribute("valCategory") %> </h1>
+			<%} else if(session.getAttribute("valCategory") == null){ %>
+				<form method="post" action="ListeCategory">
+						<button class="btn btn-outline-secondary btn-lg" type="submit">
+						
+							<span style="z-index: 2" class="icon is-small">
+						  		<i class="fas fa-pen"></i> 
+						    </span> 
+					    </button>
+						
+				</form>
+				<h1><%= session.getAttribute("recapCategorie") %> </h1>
+				
+			<%} else { %>
 			
-		<%} %>
-			 
-	<%} else { %>
-		<%if(session.getAttribute("inputSaisieArticle") == null) { %>
-			<h1 id="articleModif" ><%= session.getAttribute("valArticle") %> </h1>	
-		<% } else { %>
-			<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
-			
-		<%} %>
+				<form method="post" action="ListeCategory">
+						<button class="btn btn-outline-secondary btn-lg" type="submit">
+						
+							<span style="z-index: 2" class="icon is-small">
+						  		<i class="fas fa-pen"></i> 
+						    </span> 
+					    </button>						
+				</form>
+				<h1><%= session.getAttribute("valCategory") %> </h1>
+				
+			<% }%>
+				
+			<%if(session.getAttribute("recapArticle") == null) {%>	
+				<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+					<h1 ><%= session.getAttribute("valArticle") %> </h1>	
+				<%} else {%>
+					<h1 ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+				<%}
 		
-	<%} %>
+			 }else if (session.getAttribute("valArticle") == null ) {%>
+			 	<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+			 		
+		 			<h1 id="articleModif" ><%= session.getAttribute("recapArticle") %> </h1>	
+				 <% } else { %>
+					<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+					
+				<%} %>
+					 
+			<%} else { %>
+				<%if(session.getAttribute("inputSaisieArticle") == null) { %>
+					<h1 id="articleModif" ><%= session.getAttribute("valArticle") %> </h1>	
+				<% } else { %>
+					<h1 id="articleModif" ><%= session.getAttribute("inputSaisieArticle") %> </h1>	
+					
+				<%} %>
+				
+			<%} %>
+		</div>
+	</div>
 </div>
 <div id="formSaisieArticle">		
 	<form id="articleForm" method="post" action="">
@@ -190,21 +209,18 @@
 			    <textarea id="textareaForm" class="textarea" value="<%= session.getAttribute("recapCommentaire2").toString().trim() %>" placeholder="Commentaire" name="articleCommentaire2"></textarea>
 			  </div>
 			<% } %>
-	
+	<input type="hidden" value="<%= session.getAttribute("recapIdArticle").toString().trim()%>" />
 		</div>
-		<%  
-		System.out.println("cacaboudin" + session.getAttribute("recapArticleModif"));
+		<% if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "") { %>
 
-		
-		if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "" ) { %>
 		  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
 		  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
 	  	
 	  	<%} else if(session.getAttribute("recapQuantite") == null) { %>
-	  		<input id="btnAjoutArtModif" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Art" style="background-color: #0063af; color:#fff;">
+	  		<input id="btnAjoutArtModif" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
 	  	
 		<% } else { %>
-	  		<input id="btnModifArt" class="button is-size-5 has-text-weight-bold" type="submit" value="Modif Art" style="background-color: #0063af; color:#fff;">
+	  		<input id="btnModifArt" class="button is-size-5 has-text-weight-bold" type="submit" value="Modification Article" style="background-color: #0063af; color:#fff;">
 		
 		<% } %>
 	</form>

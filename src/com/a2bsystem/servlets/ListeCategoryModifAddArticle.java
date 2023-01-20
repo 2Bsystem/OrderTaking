@@ -19,7 +19,7 @@ public class ListeCategoryModifAddArticle extends HttpServlet {
 		HttpSession session = request.getSession();
 
 		session.setAttribute("articleClient", null);
-		session.setAttribute("recapArticleModif", null);
+		//session.setAttribute("recapArticleModif", null);
         session.setAttribute("recapClient", null);
 	    session.setAttribute("recapQuantite", null);
 	    session.setAttribute("recapUnite", null);

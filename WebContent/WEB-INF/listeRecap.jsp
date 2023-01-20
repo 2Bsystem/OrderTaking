@@ -45,18 +45,7 @@
 	   <input id="btnAjoutCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Commande" style="background-color: #0063af; color:#fff;">
    </form>
 	   </div>
-   <script>
-/*    var formDetailCmd = document.getElementById("detailCmd");
 
-   function myFunction(x) {
-	    //alert("Row index is: " + x.rowIndex);
-	    formDetailCmd.submit();
-	    
-	    
-	} */
-
-   </script>
-   
     <!-- FOOTER -->
   
    <footer id="footer" class="d-flex flex-wrap justify-content-between align-items-center py-3 border-top bg-light">

@@ -45,16 +45,39 @@ public class ModifArticle extends HttpServlet {
 		String nomAppelClient  = (String) session.getAttribute("nomAppelClientModifCommande");		
 
 		String valArticle = "";
+		String valCategory= "";
 		
 		System.out.println("idCommande " + session.getAttribute("idClientCommande"));
 		System.out.println("idArt " + session.getAttribute("recapIdArticle"));
 
+		if (session.getAttribute("valCategory") == null) {
+			
+			valCategory = (String) session.getAttribute("recapCategorie").toString().trim();
+		} else {
+			valCategory = (String) session.getAttribute("valCategory");
+		}
+		
+		System.out.println("valArticleeee " + session.getAttribute("valArticle"));
+		System.out.println("recapArticlleeeee " + session.getAttribute("recapArticle"));
+		System.out.println("inpuuuutArticle " + session.getAttribute("inputSaisieArticle"));
 
-		 if(session.getAttribute("inputSaisieArticle") == null) { 
-			  valArticle = (String) session.getAttribute("valArticle");
-		 	} else {
-			  valArticle = (String) session.getAttribute("inputSaisieArticle");
-		 }
+		
+		
+		if(session.getAttribute("valArticle") == null) {
+			
+			if(session.getAttribute("inputSaisieArticle") == null) { 
+				  valArticle = (String) session.getAttribute("recapArticle").toString().trim();
+			 	} else {
+				  valArticle = (String) session.getAttribute("inputSaisieArticle");
+			 }
+		} else {
+			if(session.getAttribute("inputSaisieArticle") == null) { 
+				  valArticle = (String) session.getAttribute("valArticle");
+			 	} else {
+				  valArticle = (String) session.getAttribute("inputSaisieArticle");
+			 }
+		}
+
 		 
 		 if (session.getAttribute("articlePrix")=="" || session.getAttribute("articlePrix")== null) {
 				 session.setAttribute("articlePrix", 0);
@@ -70,7 +93,7 @@ public class ModifArticle extends HttpServlet {
 																			 "',@NomAppelClient='" + nomAppelClient +
 																			 "',@Quantite=" + session.getAttribute("articleQuantite") +
 																			 ",@Unite='" + session.getAttribute("articleUnite") +
-																			 "',@Categorie='" + session.getAttribute("valCategory") +
+																			 "',@Categorie='" + valCategory +
 																			 "',@Article='" + valArticle +
 																			 "',@Origine='" + session.getAttribute("articleOrigine") +
 																			 "',@Commentaire='" + session.getAttribute("articleCommentaire") +
@@ -104,6 +127,7 @@ public class ModifArticle extends HttpServlet {
         		historique.commentaire = rs.getString("Commentaire");
         		historique.prix = rs.getString("Prix");
         		historique.date = rs.getString("Date");
+        		historique.idArticle = rs.getString("IdArticle");
 
         		historiques.add(historique);
     		
@@ -118,6 +142,8 @@ public class ModifArticle extends HttpServlet {
             		historique2.commentaire = rs.getString("Commentaire");
             		historique2.prix = rs.getString("Prix");
             		historique2.date = rs.getString("Date");
+            		historique2.idArticle = rs.getString("IdArticle");
+
             		historiques.add(historique2);
             	}
                     
@@ -128,7 +154,7 @@ public class ModifArticle extends HttpServlet {
         catch (Exception e) {
             e.printStackTrace();
         } 
-        
+        System.out.println("capetela 1 " +  session.getAttribute("recapIdArticle"));
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailCmd.jsp" ).forward( request, response );
             
 	}

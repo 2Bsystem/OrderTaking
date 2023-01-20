@@ -103,6 +103,7 @@ public class AjoutArticleModif extends HttpServlet {
         		historique.commentaire = rs.getString("Commentaire");
         		historique.prix = rs.getString("Prix");
         		historique.date = rs.getString("Date");
+        		historique.idArticle = rs.getString("IdArticle");
 
         		historiques.add(historique);
     		
@@ -117,6 +118,8 @@ public class AjoutArticleModif extends HttpServlet {
             		historique2.commentaire = rs.getString("Commentaire");
             		historique2.prix = rs.getString("Prix");
             		historique2.date = rs.getString("Date");
+            		historique2.idArticle = rs.getString("IdArticle");
+
             		historiques.add(historique2);
             	}
                     
@@ -127,7 +130,8 @@ public class AjoutArticleModif extends HttpServlet {
         catch (Exception e) {
             e.printStackTrace();
         } 
-        
+        System.out.println("capetela 2 " +  session.getAttribute("recapIdArticle"));
+
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/detailCmd.jsp" ).forward( request, response );
             
 	}
