@@ -20,8 +20,8 @@ import com.a2bsystem.models.Historique;
 /**
  * Servlet implementation class Home
  */
-@WebServlet("/AjoutArticleModif")
-public class AjoutArticleModif extends HttpServlet {
+@WebServlet("/ModifArticle")
+public class ModifArticle extends HttpServlet {
 
 	public void doPost( HttpServletRequest request, HttpServletResponse response ) throws ServletException, IOException {
 		
@@ -40,15 +40,15 @@ public class AjoutArticleModif extends HttpServlet {
 		session.setAttribute("articleCommentaire", request.getParameter("articleCommentaire") );
 		session.setAttribute("articleCommentaire2", request.getParameter("articleCommentaire2") );
 		session.setAttribute("articleOrigine", request.getParameter("articleOrigine") );
-		
-		
+
 		String codeClient  = (String) session.getAttribute("codeClientModifCommande");		
 		String nomAppelClient  = (String) session.getAttribute("nomAppelClientModifCommande");		
 
-
 		String valArticle = "";
+		
+		System.out.println("idCommande " + session.getAttribute("idClientCommande"));
+		System.out.println("idArt " + session.getAttribute("recapIdArticle"));
 
-		System.out.println("artCli ajoutArt " + codeClient);
 
 		 if(session.getAttribute("inputSaisieArticle") == null) { 
 			  valArticle = (String) session.getAttribute("valArticle");
@@ -63,8 +63,8 @@ public class AjoutArticleModif extends HttpServlet {
 		String connectionUrl = "jdbc:sqlserver://" + session.getAttribute("serveur") + ";databaseName=" + session.getAttribute("BDD") + ";user=" + "sa" + ";password=" + "2bsystem99";
 		String Login = (String) session.getAttribute("login");
 		
-        try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
-        	String SQL = "EXEC q_2bp_java_web_order_taking_ajout_article_modif @ForetagKod="+ session.getAttribute("foretagKod")  +
+		 try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
+	        	String SQL = "EXEC q_2bp_java_web_order_taking_modif_article @ForetagKod="+ session.getAttribute("foretagKod")  +
 																			 ", @Perssign='" + Login +
 																			 "',@FtgNr='" + codeClient +
 																			 "',@NomAppelClient='" + nomAppelClient +
@@ -76,15 +76,16 @@ public class AjoutArticleModif extends HttpServlet {
 																			 "',@Commentaire='" + session.getAttribute("articleCommentaire") +
 																			 "',@Commentaire2='" + session.getAttribute("articleCommentaire2") +
 																			 "',@Prix=" + session.getAttribute("articlePrix") +
-																			 ",@Id=" + session.getAttribute("idClientCommande") +";";
-        	
-        	System.out.println(SQL);
-			ResultSet rs = stmt.executeQuery(SQL);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        } 
-        
+																			 ",@Id=" + session.getAttribute("idClientCommande") +
+																			 ",@IdArticle=" + session.getAttribute("recapIdArticle") +";";
+																			 
+	        	System.out.println(SQL);
+				ResultSet rs = stmt.executeQuery(SQL);
+	        }
+	        catch (Exception e) {
+	            e.printStackTrace();
+	        } 
+		
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
         	String SQL = "EXEC q_2bp_java_web_order_taking_get_histo_commande_modif " + session.getAttribute("foretagKod") +",'" 
                                                                                       + Login + "'," 

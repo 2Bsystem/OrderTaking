@@ -32,7 +32,12 @@
 					      			   		  <%= histo.origine %>//
 					      			   		  <%= histo.commentaire %>//
 					      			   		  <%= histo.commentaire2 %>//
-					      			   		  <%= histo.prix %>" >
+					      			   		  <%= histo.prix %>//
+					      			   		  <%= histo.idArticle %>" >
+					      			   		  
+		      			   		<span style="z-index: 2" class="icon is-small">
+							  		<i class="fas fa-pen"></i> 
+							    </span>
 	      			   		  </button> </td>
 					    </tr>
 					       <% } 
@@ -41,11 +46,11 @@
 				  </tbody>
 			 </table>
 		</form>
-		<form method="post" action="ListeCategory">
+		<form method="post" action="ListeCategoryModifAddArticle">
 			<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" name="ajoutArticleCmdModif" value="Ajout Article" style="background-color: #0063af; color:#fff;">	
 		</form>
 
-		<form method="post" action="ConfCommande">
+		<form method="post" action="ConfCommandeModif">
 			<div id ="btnImpressions">
 		  		<input id="btnValiderImpression" name="impression1" class="button is-size-5 has-text-weight-bold" type="submit" value="<%= session.getAttribute("Imprimante1") %>" style="background-color: #0063af; color:#fff;">
 		  		<input id="btnValiderImpression2" name="impression2" class="button is-size-5 has-text-weight-bold" type="submit" value="<%= session.getAttribute("Imprimante2") %>" style="background-color: #0063af; color:#fff;">

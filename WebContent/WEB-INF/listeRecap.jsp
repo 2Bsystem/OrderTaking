@@ -22,12 +22,18 @@
 			      		for (histoClient histo : (List<histoClient>) request.getAttribute("histoClients")) {
 			        %>
 			        <tr>
-			         <td> <%= histo.client %>  </td>
-			         <td> <%= histo.totalPrix %> </td>
-			         <td> <%= histo.date %>  </td>
-
-					 <td> <button type="submit" class="btn btn-outline-secondary btn-lg" name="idCmd" value="<%= histo.id %>//<%= histo.client %>//<%= histo.codeClient %>" >  </button> </td>
-				       </tr>
+				         <td> <%= histo.client %>  </td>
+				         <td> <%= histo.totalPrix %> </td>
+				         <td> <%= histo.date %>  </td>
+	
+						 <td> 
+						 	<button type="submit" class="btn btn-outline-secondary btn-lg" name="idCmd" value="<%= histo.id %>//<%= histo.client %>//<%= histo.codeClient %>" >
+							 	<span style="z-index: 2" class="icon is-small">
+							  		<i class="fas fa-pen"></i> 
+							    </span>
+						   	</button> 
+					   	 </td>
+			       </tr>
 				       <% }
 				  }
 					%>

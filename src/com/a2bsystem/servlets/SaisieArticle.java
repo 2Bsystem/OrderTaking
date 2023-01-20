@@ -64,13 +64,18 @@ public class SaisieArticle extends HttpServlet {
 		session.setAttribute("inputSaisieArticle", request.getParameter("inputSaisieArticle") );
 		
 		System.out.println(session.getAttribute("valArticle"));
-		System.out.println("inputArticle prout " + session.getAttribute("inputSaisieArticle"));
+		System.out.println("inputArticle " + session.getAttribute("inputSaisieArticle"));
 		System.out.println(session.getAttribute("articleClient"));
-		System.out.println("ValCat prout " +session.getAttribute("valCategory"));
-		//System.out.println("recapCat prout " +(session.getAttribute("recapCategorie").toString().trim()));
-		System.out.println("ValArticle prout " +session.getAttribute("valArticle"));
-		//System.out.println("recapArticle prout " +(session.getAttribute("recapArticle").toString().trim()));
+		System.out.println("ValCat  " +session.getAttribute("valCategory"));
+		//System.out.println("recapCat  " +(session.getAttribute("recapCategorie").toString().trim()));
+		System.out.println("ValArticle  " +session.getAttribute("valArticle"));
+		//System.out.println("recapArticle  " +(session.getAttribute("recapArticle").toString().trim()));
+		//System.out.println("trucbidule " + session.getAttribute("recapArticleModif"));
+		System.out.println("idCommandeSaisie " + session.getAttribute("idClientCommande"));
+		System.out.println("idArtSaisie " + session.getAttribute("recapIdArticle"));
 		
+		//session.setAttribute("recapArticleModif", null);
+
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}

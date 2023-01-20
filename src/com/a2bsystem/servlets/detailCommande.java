@@ -60,6 +60,7 @@ public class detailCommande extends HttpServlet {
         		historique.commentaire2 = rs.getString("Commentaire2");
         		historique.prix = rs.getString("Prix");
         		historique.date = rs.getString("Date");
+        		historique.idArticle = rs.getString("IdArticle");
 
         		historiques.add(historique);
     		
@@ -75,6 +76,8 @@ public class detailCommande extends HttpServlet {
             		historique2.commentaire2 = rs.getString("Commentaire2");
             		historique2.prix = rs.getString("Prix");
             		historique2.date = rs.getString("Date");
+            		historique2.idArticle = rs.getString("IdArticle");
+
             		historiques.add(historique2);
             	}
                     

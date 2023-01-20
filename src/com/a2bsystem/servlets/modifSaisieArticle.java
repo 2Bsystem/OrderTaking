@@ -40,11 +40,19 @@ public class modifSaisieArticle extends HttpServlet {
 		     session.setAttribute("recapCommentaire", arrayrecapArticleModif[6]);
 		     session.setAttribute("recapCommentaire2", arrayrecapArticleModif[7]);
 		     session.setAttribute("recapPrix", arrayrecapArticleModif[8]);
+		     session.setAttribute("recapIdArticle", arrayrecapArticleModif[9]);
+		     
+		        session.setAttribute("valCategory",null);
+				session.setAttribute("valArticle",null);
+				session.setAttribute("inputSaisieArticle",null);
 		}
 		
+		/*
 		session.setAttribute("valCategory",null);
 		session.setAttribute("valArticle",null);
 		session.setAttribute("inputSaisieArticle",null);
+		*/
+		System.out.println("cacaboudin" + session.getAttribute("recapArticleModif"));
 
 		this.getServletContext().getRequestDispatcher( "/WEB-INF/saisieArticle.jsp" ).forward( request, response );
 	}

@@ -192,23 +192,31 @@
 			<% } %>
 	
 		</div>
-		<% if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "" ) { %>
+		<%  
+		System.out.println("cacaboudin" + session.getAttribute("recapArticleModif"));
+
+		
+		if(session.getAttribute("nomAppelClientModifCommande") == null || session.getAttribute("nomAppelClientModifCommande") == "" ) { %>
 		  	<input id="btnSaisieArticle" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Article" style="background-color: #0063af; color:#fff;">
 		  	<input id="btnValiderCommande" class="button is-size-5 has-text-weight-bold" type="submit" value="Valider Commande" style="background-color: #0063af; color:#fff;">
 	  	
-	  	<%} else { %>
-	  		<input id="btnRetourDetailCmd" class="button is-size-5 has-text-weight-bold" type="submit" value="Retour Detail Cmd" style="background-color: #0063af; color:#fff;">
+	  	<%} else if(session.getAttribute("recapQuantite") == null) { %>
+	  		<input id="btnAjoutArtModif" class="button is-size-5 has-text-weight-bold" type="submit" value="Ajout Art" style="background-color: #0063af; color:#fff;">
 	  	
+		<% } else { %>
+	  		<input id="btnModifArt" class="button is-size-5 has-text-weight-bold" type="submit" value="Modif Art" style="background-color: #0063af; color:#fff;">
+		
 		<% } %>
 	</form>
-
 </div>
 <script>
 	let selectClient = document.getElementById('selectClient');
 	let btnSaisieArticle = document.getElementById('btnSaisieArticle');
 	let btnValiderCommande = document.getElementById('btnValiderCommande');
 	let formSaisie = document.getElementById('articleForm');
-	let btnRetourDetailCmd = document.getElementById('btnRetourDetailCmd');
+	let btnAjoutArtModif = document.getElementById('btnAjoutArtModif');
+	let btnModifArt = document.getElementById('btnModifArt');
+
 
 	if( btnSaisieArticle !== null) {
 		btnSaisieArticle.onclick = function() {
@@ -221,12 +229,21 @@
 		}
 		
 	}
-	  
 	
-	btnRetourDetailCmd.onclick = function() {
-		formSaisie.action = 'AjoutArticleModif';   
-	} 
+	if(btnAjoutArtModif !== null ) {
+		btnAjoutArtModif.onclick = function() {
+			formSaisie.action = 'AjoutArticleModif';   
+		}
+	}
+	
+	if(btnModifArt !== null) {
+		console.log("bonjour");
+		btnModifArt.onclick = function() {
+			formSaisie.action = 'ModifArticle';   
+		} 
 
+	}
+	
 
 </script>
 

@@ -11,4 +11,5 @@ public class Historique {
 	public String commentaire2;
 	public String prix;
 	public String date;
+	public String idArticle;
 }
